@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-image"></div>
+  <div class="login-form-container">
+    <div class="form-container" fxLayout="column" fxLayoutGap="32px">
+      <span class="header">Welcome Back!</span>
+      <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="32px">
+        <div fxLayout="column">
+          <mat-form-field appearance="fill" fxFlex>
+            <input
+              matInput
+              formControlName="username"
+              placeholder="Username"
+              type="text"
+            />
+          </mat-form-field>
+          <span
+            *ngIf="!formGroup.get('username')?.valid"
+            style="color: red; position: absolute"
+            >* Nhập tài khoản đăng nhập</span
+          >
+        </div>
+        <div fxLayout="column">
+          <mat-form-field appearance="fill" fxFlex>
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              type="password"
+            />
+          </mat-form-field>
+          <span
+            *ngIf="!formGroup.get('password')?.valid"
+            style="color: red; position: absolute"
+            >* Nhập mật khẩu đăng nhập</span
+          >
+        </div>
+      </form>
+      <div
+        class="login-submit-button valid"
+        (click)="onLogin()"
+        *ngIf="formGroup.valid"
+      >
+        LOGIN
+      </div>
+      <div class="login-submit-button invalid" *ngIf="!formGroup.valid">
+        LOGIN
+      </div>
+    </div>
+  </div>
+</div>
