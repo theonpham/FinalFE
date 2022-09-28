@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
   onLogin() {
     const value = this.formGroup.getRawValue();
-    if (value.username == 123 && value.password == 123) {
-      this.cookieService.set('Login', 'true');
-    }
+    this.cookieService.set('login', 'true');
+    this.router.navigate([`/dashboard`]);
   }
 }

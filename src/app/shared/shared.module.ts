@@ -4,8 +4,11 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SidenavComponent } from './sidenav/sidenav.component';
 @NgModule({
-  declarations: [],
+  declarations: [
+    SidenavComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

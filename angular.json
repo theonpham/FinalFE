@@ -105,5 +105,7 @@
       }
     }
   },
-  "defaultProject": "finalFE"
+  "cli": {
+    "analytics": false
+  }
 }
