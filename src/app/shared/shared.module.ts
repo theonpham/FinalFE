@@ -5,10 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 @NgModule({
-  declarations: [
-    SidenavComponent
-  ],
+  declarations: [SidenavComponent, TopBarComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -17,6 +16,12 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     FormsModule,
     FlexLayoutModule,
   ],
-  exports: [MaterialModule, ReactiveFormsModule, FlexLayoutModule],
+  exports: [
+    MaterialModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    SidenavComponent,
+    TopBarComponent,
+  ],
 })
 export class SharedModule {}
