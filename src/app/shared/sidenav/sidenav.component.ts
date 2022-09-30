@@ -40,6 +40,12 @@ export class SidenavComponent implements OnInit {
       domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/food.svg')
     );
     matIconRegistry.addSvgIcon(
+      'food-type',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../../../assets/food-type.svg'
+      )
+    );
+    matIconRegistry.addSvgIcon(
       'client',
       domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/client.svg')
     );
@@ -48,6 +54,7 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedMenu = (this.pLocation as any).location.pathname;
+    if (this.selectedMenu == '/') this.selectedMenu = '/dashboard';
   }
   selectMenu(link: string) {
     this.selectedMenu = link;

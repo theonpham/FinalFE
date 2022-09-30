@@ -27,6 +27,11 @@ export const SIDENAV_CONTENTS: SideNav[] = [
     navLink: '/food',
   },
   {
+    name: 'Thể loại',
+    svgIcon: 'food-type',
+    navLink: '/food-type',
+  },
+  {
     name: 'Khách hàng thân thiết',
     svgIcon: 'client',
     navLink: '/client',
