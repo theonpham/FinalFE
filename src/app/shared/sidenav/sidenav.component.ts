@@ -2,6 +2,7 @@ import { PlatformLocation } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NavigationEnd, Router } from '@angular/router';
 import { SIDENAV_CONTENTS } from './sidenav.constant';
 
 @Component({
@@ -14,7 +15,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     matIconRegistry: MatIconRegistry,
     domSanitizer: DomSanitizer,
-    private pLocation: PlatformLocation
+    private pLocation: PlatformLocation,
+    private router: Router
   ) {
     // regis icon
     matIconRegistry.addSvgIcon(
@@ -55,6 +57,15 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.selectedMenu = (this.pLocation as any).location.pathname;
     if (this.selectedMenu == '/') this.selectedMenu = '/dashboard';
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        if (val.url == '/') {
+          this.selectedMenu = '/dashboard';
+        } else {
+          this.selectedMenu = val.url;
+        }
+      }
+    });
   }
   selectMenu(link: string) {
     this.selectedMenu = link;

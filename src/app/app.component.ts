@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -8,17 +8,32 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./app.component.scss'],
   providers: [CookieService],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
   loggedIn = false;
   constructor(private cookieService: CookieService, private router: Router) {}
+  ngDoCheck(): void {
+    if (this.cookieService.check('login')) {
+      this.cookieService.get('login')
+        ? (this.loggedIn = true)
+        : (this.loggedIn = false);
+    } else {
+      this.loggedIn = false;
+    }
+  }
   ngOnInit(): void {
     if (this.cookieService.check('login')) {
       this.cookieService.get('login')
         ? (this.loggedIn = true)
         : (this.loggedIn = false);
-      if (this.loggedIn) this.router.navigate([`/dashboard`]);
     } else {
       this.router.navigate([`/login`]);
     }
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        if (val.url == '/login') {
+          this.cookieService.delete('login');
+        }
+      }
+    });
   }
 }

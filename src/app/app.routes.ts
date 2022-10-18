@@ -11,10 +11,10 @@ import { ClientComponent } from './client/client.component';
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full',
     data: {
-      pageTitle: 'Dashboard',
+      pageTitle: 'Đăng nhập',
     },
   },
   {
@@ -73,4 +73,5 @@ export const APP_ROUTES: Routes = [
       pageTitle: 'Khách hàng thân thiết',
     },
   },
+  { path: '**', redirectTo: '/login' },
 ];

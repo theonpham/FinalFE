@@ -5,3 +5,23 @@ body {
   margin: 0;
   overflow: hidden;
 }
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cfcfd1;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c9c7c7;
+}
