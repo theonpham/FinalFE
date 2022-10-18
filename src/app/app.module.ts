@@ -16,9 +16,10 @@ import { FoodTypeComponent } from './food-type/food-type.component';
 import { FoodListComponent } from './food/food-list/food-list.component';
 import { FoodFilterComponent } from './food/food-filter/food-filter.component';
 import { FoodInputComponent } from './food/food-input/food-input.component';
+import { FoodDetailComponent } from './food/food-detail/food-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, TableComponent, StaffComponent, BillComponent, FoodComponent, ClientComponent, FoodTypeComponent, FoodListComponent, FoodFilterComponent, FoodInputComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, TableComponent, StaffComponent, BillComponent, FoodComponent, ClientComponent, FoodTypeComponent, FoodListComponent, FoodFilterComponent, FoodInputComponent, FoodDetailComponent],
 
   imports: [
     BrowserModule,

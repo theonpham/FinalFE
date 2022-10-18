@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FoodDetailComponent } from '../food-detail/food-detail.component';
 import { FOOD } from '../food.const';
 import { FoodService } from '../food.service';
 
@@ -8,7 +10,7 @@ import { FoodService } from '../food.service';
   styleUrls: ['./food-list.component.scss'],
 })
 export class FoodListComponent implements OnInit {
-  constructor(private service: FoodService) {}
+  constructor(private service: FoodService, private _dialog: MatDialog) {}
   data: FOOD[] = [];
   filteredData: FOOD[] = [];
   init = false;
@@ -48,5 +50,15 @@ export class FoodListComponent implements OnInit {
         return match;
       });
     }
+  }
+  openDetail(row: FOOD) {
+    const dialogRef = this._dialog.open(FoodDetailComponent, {
+      width: '1200px',
+      height: '800px',
+      data: {
+        row: row,
+      },
+    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 }

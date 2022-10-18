@@ -11,6 +11,9 @@
       background: #ffffff;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
       border-radius: 10px;
+      &:hover {
+        cursor: pointer;
+      }
       img {
         width: 240px;
         height: 185px;

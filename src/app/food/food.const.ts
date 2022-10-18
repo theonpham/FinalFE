@@ -7,5 +7,5 @@ export interface FOOD {
   price: any;
 }
 export const getFoodListURL = 'https://createapiiii.herokuapp.com/getall';
-export const addFoodURL = 'https://createapiiii.herokuapp.com/getall';
+export const addFoodURL = 'https://createapiiii.herokuapp.com/';
 export const removeFoodURL = 'https://createapiiii.herokuapp.com/delete';

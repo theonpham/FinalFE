@@ -21,11 +21,7 @@ export class AppComponent implements OnInit, DoCheck {
     }
   }
   ngOnInit(): void {
-    if (this.cookieService.check('login')) {
-      this.cookieService.get('login')
-        ? (this.loggedIn = true)
-        : (this.loggedIn = false);
-    } else {
+    if (!this.cookieService.check('login')) {
       this.router.navigate([`/login`]);
     }
     this.router.events.subscribe((val) => {
