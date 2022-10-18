@@ -1,11 +1,10 @@
 .food-list-container {
   overflow: auto;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 220px);
   .food-list {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    justify-content: space-evenly;
     .food {
       height: 300px;
       width: 240px;

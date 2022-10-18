@@ -1,0 +1,41 @@
+::ng-deep .food-filter-container {
+  .food-filter {
+    display: flex;
+    gap: 2px;
+    .mat-form-field {
+      height: 40px;
+      .mat-form-field-wrapper {
+        height: inherit;
+        .mat-form-field-flex {
+          max-width: 15vw;
+          width: 15vw;
+          height: 40px;
+          padding: 0 !important;
+        }
+      }
+    }
+    .mat-form-field-infix {
+      padding-top: 0px !important;
+      padding-left: 16px !important;
+      padding-bottom: 0px !important;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 18px;
+      input {
+        max-width: 15vw;
+      }
+    }
+  }
+  .filter-toggle-icon {
+    height: 39px;
+    width: 40px;
+    background: #f5f6f6;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

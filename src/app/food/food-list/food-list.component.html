@@ -1,5 +1,6 @@
 <div class="food-list-container">
-  <div class="food-list">
+  <mat-spinner *ngIf="!init"></mat-spinner>
+  <div class="food-list" *ngIf="init">
     <div class="food" *ngFor="let food of filteredData">
       <img src="{{ food.urlImage }}" />
       <div class="food-info">
