@@ -7,3 +7,6 @@
   display: grid;
   grid-template-columns: 255px 1fr;
 }
+::ng-deep mat-dialog-container {
+  padding: unset !important;
+}

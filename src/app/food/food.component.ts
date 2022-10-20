@@ -15,9 +15,6 @@ export class FoodComponent implements OnInit {
     event.preventDefault();
     const dialogRef = this._dialog.open(FoodInputComponent, {
       width: '800px',
-      // data: {
-
-      // },
     });
     dialogRef.afterClosed().subscribe(() => {});
   }

@@ -1,1 +1,87 @@
-<p>food-input works!</p>
+<div class="form-input-container">
+  <div class="form-header">
+    <span class="form-title">New Record</span>
+    <div class="form-close" (click)="onCloseSidenav()">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M18 7.05L16.95 6L12 10.95L7.05 6L6 7.05L10.95 12L6 16.95L7.05 18L12 13.05L16.95 18L18 16.95L13.05 12L18 7.05Z"
+          fill="#9FA4AA"
+        />
+      </svg>
+    </div>
+  </div>
+  <form
+    [formGroup]="formGroup"
+    class="form-container"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <div fxLayout="column" class="form" style="height: calc(100vh - 500px)">
+      <div fxLayout="column">
+        <mat-label>Name <span style="color: red">*</span></mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput type="text" formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-label
+          >Image URL
+          <mat-label
+            >Name <span style="color: red">*</span></mat-label
+          ></mat-label
+        >
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput formControlName="urlImage" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-label>Type</mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput formControlName="type" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-label>Price</mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput formControlName="price" type="number" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-label>Total</mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput formControlName="total" type="number" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="form-action">
+        <button
+          mat-raised-button
+          color="primary"
+          class="clear"
+          (click)="onSubmit()"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="generate"
+          [class.disabled]="!formGroup.valid"
+          [disabled]="!formGroup.valid"
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
