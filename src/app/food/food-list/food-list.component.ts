@@ -55,9 +55,7 @@ export class FoodListComponent implements OnInit {
     const dialogRef = this._dialog.open(FoodDetailComponent, {
       width: '1200px',
       height: '800px',
-      data: {
-        row: row,
-      },
+      data: row
     });
     dialogRef.afterClosed().subscribe(() => {});
   }

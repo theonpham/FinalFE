@@ -23,14 +23,27 @@ export class FoodInputComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FoodInputComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { selectedFood: FOOD },
+    public data: FOOD,
     private service: FoodService
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.data){
+      this.selectedFood = this.data;
+      this.patchValue(this.selectedFood)
+    }
+  }
+  patchValue(food : FOOD){
+    this.formGroup.patchValue({
+      name : food.name,
+      urlImage : food.urlImage,
+      type : food.type,
+      price : food.price,
+      total : food .total
+    })
+  }
   onSubmit() {
     const input = this.formGroup.getRawValue();
     console.log(input);
-
     this.service.addFood(input).subscribe((data) => {
       console.log(data);
     });
