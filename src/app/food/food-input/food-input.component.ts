@@ -10,8 +10,7 @@ import { FoodService } from '../food.service';
   styleUrls: ['./food-input.component.scss'],
 })
 export class FoodInputComponent implements OnInit {
-  // @ts-ignore
-  selectedFood: FOOD;
+  selectedFood!: FOOD;
   formGroup: FormGroup = this.fb.group({
     name: [null, [Validators.required]],
     urlImage: [null, [Validators.required]],
@@ -43,10 +42,20 @@ export class FoodInputComponent implements OnInit {
   }
   onSubmit() {
     const input = this.formGroup.getRawValue();
-    console.log(input);
-    this.service.addFood(input).subscribe((data) => {
-      console.log(data);
-    });
+    if(!this.selectedFood){
+      this.service.addFood(input).subscribe((data) => {
+        console.log(data);
+      });
+    }else{
+      const updateInput = {
+        id : this.selectedFood._id,
+        ...input
+      }
+      console.log(updateInput);
+      this.service.updateFood(updateInput).subscribe((data) => {
+        console.log(data);
+      });
+    }
   }
   onCloseSidenav() {
     this.dialogRef.close();

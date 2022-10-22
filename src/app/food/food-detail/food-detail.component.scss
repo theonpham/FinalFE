@@ -1,0 +1,12 @@
+.food-detail-cointainer{
+    display: grid;
+    grid-template-columns: 255px 1fr;
+    .food-detail-info{
+        img{
+            width: 240px;
+            height: 185px;
+            mix-blend-mode: normal;
+        }
+
+    }
+}
