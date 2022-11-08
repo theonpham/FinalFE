@@ -15,11 +15,11 @@ export class ApiHttpService {
     return this.http.post(url, body, header);
   }
 
-  public put(url: any, httpOption?: any, header?: any): Observable<any> {
-    return this.http.put(url, httpOption, header);
+  public put(url: any, body?: any, header?: any): Observable<any> {
+    return this.http.put(url, body, header);
   }
 
-  public delete(url: any, httpOption?: any, header?: any): Observable<any> {
-    return this.http.delete(url, httpOption);
+  public delete(url: any, body?: any, header?: any): Observable<any> {
+    return this.http.delete(url, body);
   }
 }

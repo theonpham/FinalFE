@@ -10,3 +10,17 @@
 ::ng-deep mat-dialog-container {
   padding: unset !important;
 }
+::ng-deep .success-snackbar {
+  background: #5cb85c;
+  color: white;
+  .mat-simple-snackbar-action {
+    color: white !important;
+  }
+}
+::ng-deep .fail-snackbar {
+  background: #d9534f;
+  color: white;
+  .mat-simple-snackbar-action {
+    color: white !important;
+  }
+}

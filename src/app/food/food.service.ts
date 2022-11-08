@@ -2,7 +2,13 @@ import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiHttpService } from '../shared/api-http.service';
-import { getFoodListURL, FOOD, addFoodURL, removeFoodURL, updateFoodURL } from './food.const';
+import {
+  getFoodListURL,
+  FOOD,
+  addFoodURL,
+  removeFoodURL,
+  updateFoodURL,
+} from './food.const';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +23,8 @@ export class FoodService {
   addFood(input: FOOD): Observable<any> {
     return this.http.post(addFoodURL, input);
   }
-  updateFood(input: any): Observable<any> {
-    return this.http.post(updateFoodURL, input);
+  updateFood(id: string, input: any): Observable<any> {
+    return this.http.put(updateFoodURL(id), input);
   }
   deleteFood(id: string): Observable<any> {
     return this.http.post(removeFoodURL);

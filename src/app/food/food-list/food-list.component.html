@@ -6,14 +6,11 @@
       *ngFor="let food of filteredData"
       (click)="openDetail(food)"
     >
-      <img
-        alt="../../../assets/No-Image-Placeholder.svg.png"
-        src="{{ food.urlImage }}"
-      />
+      <img alt="No image" src="{{ food.urlImage }}" />
       <div class="food-info">
         <span class="food-name">{{ food.name }}</span>
         <span class="food-price">{{ food.price }} VND</span>
-        <span class="food-type">{{ food.type }}</span>
+        <span class="food-type">{{ "Thể loại : " + food.type }}</span>
         <div class="food-total">
           <span class="food-total-text">Tổng số còn lại : </span
           >{{ food.total }}
