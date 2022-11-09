@@ -1,1 +1,29 @@
-<p>table-list works!</p>
+<!-- <div class="table-container" *ngIf="init">
+  <div class="table-table-container">
+    <table
+      mat-table
+      matSort
+      class="table-table"
+      [dataSource]="dataSource"
+      fxFill
+      multiTemplateDataRows
+    >
+      <ng-container matColumnDef="sample">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Sample
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.entity?.name }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row class="detail-row"></tr>
+    </table>
+    <div
+      class="mat-title"
+      *ngIf="data?.length === 0"
+      fxLayoutAlign="center center"
+    >
+      Không có data
+    </div>
+  </div>
+</div> -->

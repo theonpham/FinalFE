@@ -1,0 +1,32 @@
+.table-page-container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  .table-toolbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 16px 11px 16px;
+    .action {
+      display: flex;
+      height: 48px;
+      svg:hover {
+        cursor: pointer;
+      }
+      .btn-add {
+        margin-left: 10px;
+        display: flex;
+        border-radius: 4px;
+        background: #0073ff;
+        border: 1px solid #0073ff;
+        padding: 11px 13px 11px 13px;
+        color: #ffffff;
+        line-height: 18px;
+        gap: 30px;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}

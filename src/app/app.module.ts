@@ -21,6 +21,10 @@ import { TableDetailComponent } from './table/table-detail/table-detail.componen
 import { TableFilterComponent } from './table/table-filter/table-filter.component';
 import { TableInputComponent } from './table/table-input/table-input.component';
 import { TableListComponent } from './table/table-list/table-list.component';
+import { StaffListComponent } from './staff/staff-list/staff-list.component';
+import { StaffDetailComponent } from './staff/staff-detail/staff-detail.component';
+import { StaffFilterComponent } from './staff/staff-filter/staff-filter.component';
+import { StaffInputComponent } from './staff/staff-input/staff-input.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import { TableListComponent } from './table/table-list/table-list.component';
     TableFilterComponent,
     TableInputComponent,
     TableListComponent,
+    StaffListComponent,
+    StaffDetailComponent,
+    StaffFilterComponent,
+    StaffInputComponent,
   ],
 
   imports: [
