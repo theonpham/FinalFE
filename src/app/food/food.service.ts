@@ -27,7 +27,7 @@ export class FoodService {
     return this.http.put(updateFoodURL(id), input);
   }
   deleteFood(id: string): Observable<any> {
-    return this.http.post(removeFoodURL);
+    return this.http.post(removeFoodURL(id));
   }
   changeFilterValue(value: any): void {
     this._filterValue.next(value);

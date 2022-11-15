@@ -1,1 +1,80 @@
-<p>staff-input works!</p>
+<div class="form-input-container">
+  <div class="form-header">
+    <span class="form-title">Thêm nhân viên</span>
+    <div class="form-close" (click)="onCloseSidenav()">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M18 7.05L16.95 6L12 10.95L7.05 6L6 7.05L10.95 12L6 16.95L7.05 18L12 13.05L16.95 18L18 16.95L13.05 12L18 7.05Z"
+          fill="#9FA4AA"
+        />
+      </svg>
+    </div>
+  </div>
+  <form
+    [formGroup]="formGroup"
+    class="form-container"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <div fxLayout="column" class="form" style="height: calc(100vh - 500px)">
+      <div fxLayout="column">
+        <mat-label>Họ và Tên<span style="color: red">*</span></mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput type="text" formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-label>Số điện thoại<span style="color: red">*</span></mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput type="text" formControlName="phoneNumber" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <section class="example-section" style="padding-top: 16px">
+          <mat-label>Giới tính :<span style="color: red">*</span></mat-label>
+          <mat-radio-group formControlName="gender" style="padding-left: 16px">
+            <mat-radio-button class="example-margin" value="0"
+              >Nam</mat-radio-button
+            >
+            <mat-radio-button
+              class="example-margin"
+              value="1"
+              style="padding-left: 16px"
+              >Nữ</mat-radio-button
+            >
+          </mat-radio-group>
+        </section>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="form-action">
+        <button
+          mat-raised-button
+          color="primary"
+          class="clear"
+          (click)="onSubmit()"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="generate"
+          [class.disabled]="!formGroup.valid"
+          [disabled]="!formGroup.valid"
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

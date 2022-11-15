@@ -15,7 +15,7 @@ export class SnackBarCustomService {
 
   openSnackBar(message: string, success: boolean) {
     if (!success) {
-      this.snackBarRef = this._snackBar.open(message, 'Xx', {
+      this.snackBarRef = this._snackBar.open(message, 'X', {
         duration: 6000,
         panelClass: ['fail-snackbar'],
       });

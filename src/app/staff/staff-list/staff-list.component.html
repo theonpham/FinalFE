@@ -1,1 +1,94 @@
-<p>staff-list works!</p>
+<div class="staff-list-container">
+  <div class="staff-table-container">
+    <table
+      mat-table
+      matSort
+      class="staff-table"
+      [dataSource]="dataSource"
+      fxFill
+      multiTemplateDataRows
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Họ Tên
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row?.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Số điện thoại
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row?.phoneNumber }}</td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Giới tính
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.gender === 0 ? "Nam" : "Nữ" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Tham gia vào
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row?.createdAt | date: "dd/MM/yyyy HH:mm:ss" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="updatedAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Cập nhật gần nhất
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row?.updatedAt | date: "dd/MM/yyyy HH:mm:ss" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="label">Chỉnh sửa</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1 13H15V14H1V13ZM12.7 4.5C13.1 4.1 13.1 3.5 12.7 3.1L10.9 1.3C10.5 0.9 9.9 0.9 9.5 1.3L2 8.8V12H5.2L12.7 4.5ZM10.2 2L12 3.8L10.5 5.3L8.7 3.5L10.2 2ZM3 11V9.2L8 4.2L9.8 6L4.8 11H3Z"
+                fill="#0073FF"
+              />
+            </svg>
+          </button>
+          <button mat-icon-button>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 1H6V2H10V1ZM2 3V4H3V14C3 14.6 3.4 15 4 15H12C12.6 15 13 14.6 13 14V4H14V3H2ZM4 14V4H12V14H4ZM6 6H7V12H6V6ZM10 6H9V12H10V6Z"
+                fill="#0073FF"
+              />
+            </svg>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row class="detail-row"></tr>
+    </table>
+    <div
+      class="mat-title"
+      *ngIf="data?.length === 0"
+      fxLayoutAlign="center center"
+    >
+      Không có data
+    </div>
+  </div>
+</div>

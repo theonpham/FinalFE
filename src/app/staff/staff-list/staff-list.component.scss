@@ -1,0 +1,17 @@
+.staff-list-container {
+  overflow: auto;
+  height: calc(100vh - 220px);
+  background-color: #ffff;
+  .label {
+    color: #000000;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  tr.mat-header-row {
+    height: 48px;
+    background-color: #ecedee;
+  }
+  tr.mat-row:hover {
+    background: whitesmoke;
+  }
+}

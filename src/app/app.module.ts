@@ -25,6 +25,7 @@ import { StaffListComponent } from './staff/staff-list/staff-list.component';
 import { StaffDetailComponent } from './staff/staff-detail/staff-detail.component';
 import { StaffFilterComponent } from './staff/staff-filter/staff-filter.component';
 import { StaffInputComponent } from './staff/staff-input/staff-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { StaffInputComponent } from './staff/staff-input/staff-input.component';
     SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
