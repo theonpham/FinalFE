@@ -26,6 +26,7 @@ export class StaffListComponent implements OnInit {
   ];
   filterValue: any;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private _dialog: MatDialog, private service: StaffService) {}
   ngOnInit(): void {
     this.reload();
@@ -54,6 +55,7 @@ export class StaffListComponent implements OnInit {
       };
       this.dataSource.filterPredicate = this.filterPredicate;
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       this.reloadFilter();
     });
   }

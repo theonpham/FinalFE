@@ -1,6 +1,6 @@
 .staff-list-container {
   overflow: auto;
-  height: calc(100vh - 220px);
+  max-height: calc(100vh - 220px);
   background-color: #ffff;
   .label {
     color: #000000;
