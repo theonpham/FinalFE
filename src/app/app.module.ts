@@ -26,6 +26,10 @@ import { StaffDetailComponent } from './staff/staff-detail/staff-detail.componen
 import { StaffFilterComponent } from './staff/staff-filter/staff-filter.component';
 import { StaffInputComponent } from './staff/staff-input/staff-input.component';
 import { FormsModule } from '@angular/forms';
+import { BillDetailComponent } from './bill/bill-detail/bill-detail.component';
+import { BillFilterComponent } from './bill/bill-filter/bill-filter.component';
+import { BillInputComponent } from './bill/bill-input/bill-input.component';
+import { BillListComponent } from './bill/bill-list/bill-list.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ import { FormsModule } from '@angular/forms';
     StaffDetailComponent,
     StaffFilterComponent,
     StaffInputComponent,
+    BillDetailComponent,
+    BillFilterComponent,
+    BillInputComponent,
+    BillListComponent,
   ],
 
   imports: [

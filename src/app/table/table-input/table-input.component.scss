@@ -1,0 +1,98 @@
+::ng-deep .form-input-container {
+  background: #ffffff;
+  border-radius: 4px;
+  .form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .form-title {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 23px;
+      color: #45494e;
+      letter-spacing: 0.16px;
+      padding-left: 24px;
+    }
+    .form-close {
+      border-left: 1px solid #d9dbdd;
+      padding: 16px;
+      cursor: pointer;
+    }
+  }
+  .form-container {
+    border-top: 1px solid #d9dbdd;
+    .form {
+      place-content: flex-start;
+      padding: 0px 24px 0px 24px;
+      overflow: auto;
+      mat-label {
+        margin-top: 12px;
+        margin-bottom: 8px;
+      }
+      .mat-form-field {
+        height: 40px;
+        .mat-form-field-wrapper {
+          height: inherit;
+          .mat-form-field-flex {
+            background-color: #fbfbfc;
+            height: 40px;
+            padding: 0 !important;
+            font-size: 14px;
+            color: #000000;
+            min-width: 226px;
+          }
+        }
+      }
+      .mat-form-field-infix {
+        padding-top: 0px !important;
+        padding-left: 16px !important;
+        padding-bottom: 0px !important;
+        border-top: 13px solid transparent !important;
+        .mat-select {
+          .mat-select-trigger {
+            .mat-select-arrow-wrapper {
+              display: flex;
+            }
+          }
+        }
+      }
+      .form-row {
+        justify-content: space-between;
+      }
+    }
+    .footer {
+      border-top: 1px solid #d9dbdd;
+      .form-action {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+        padding: 16px;
+        .generate {
+          background: #0073ff;
+          font-weight: 300;
+          font-family: "America Standard Light";
+          width: 100px;
+          height: 40px;
+          color: #ffffff;
+          border: 2px solid #0073ff;
+        }
+        .clear {
+          background: transparent;
+          font-weight: 300;
+          font-family: "America Standard Light";
+          width: 100px;
+          height: 40px;
+          color: #0073ff;
+          border: 1px solid #0073ff;
+          margin-right: 20px;
+        }
+        .disabled {
+          border: 2px solid #d9dbdd;
+          background: #d9dbdd;
+          color: #8c9299;
+        }
+      }
+    }
+  }
+}

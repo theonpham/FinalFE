@@ -1,6 +1,7 @@
 <div class="form-input-container">
   <div class="form-header">
-    <span class="form-title">New Record</span>
+    <span class="form-title" *ngIf="!selectedFood">Thêm đồ ăn</span>
+    <span class="form-title" *ngIf="selectedFood">Sửa đồ ăn</span>
     <div class="form-close" (click)="onCloseSidenav()">
       <svg
         width="24"
