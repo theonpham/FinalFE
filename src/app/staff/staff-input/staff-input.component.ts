@@ -46,6 +46,7 @@ export class StaffInputComponent implements OnInit {
       this.service.addStaff(input).subscribe(
         (data) => {
           this.snackBar.openSnackBar('Created Successfully', true);
+          this.service.reloadTableList('Create');
           this.onCloseSidenav();
         },
         () => {
@@ -53,15 +54,16 @@ export class StaffInputComponent implements OnInit {
         }
       );
     } else {
-      // this.service.updateFood(this.selectedStaff._id, input).subscribe(
-      //   (data) => {
-      //     this.snackBar.openSnackBar('Updated Successfully', true);
-      //     this.onCloseSidenav();
-      //   },
-      //   () => {
-      //     this.snackBar.openSnackBar('Update Failed', false);
-      //   }
-      // );
+      this.service.updateStaff(this.selectedStaff._id, input).subscribe(
+        (data) => {
+          this.snackBar.openSnackBar('Updated Successfully', true);
+          this.service.reloadTableList('Update');
+          this.onCloseSidenav();
+        },
+        () => {
+          this.snackBar.openSnackBar('Update Failed', false);
+        }
+      );
     }
   }
   onCloseSidenav() {

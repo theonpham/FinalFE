@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { SnackBarCustomService } from 'src/app/shared/snackbar.service';
 import { StaffDetailComponent } from '../staff-detail/staff-detail.component';
+import { StaffInputComponent } from '../staff-input/staff-input.component';
 import { STAFF } from '../staff.const';
 import { StaffService } from '../staff.service';
 
@@ -27,9 +29,16 @@ export class StaffListComponent implements OnInit {
   filterValue: any;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private _dialog: MatDialog, private service: StaffService) {}
+  constructor(
+    private _dialog: MatDialog,
+    private service: StaffService,
+    private snackBar: SnackBarCustomService
+  ) {}
   ngOnInit(): void {
     this.reload();
+    this.service.reloadTable$.subscribe(() => {
+      this.reload();
+    });
   }
   reload(): void {
     this.service.getAllStaffList().subscribe((data) => {
@@ -95,4 +104,22 @@ export class StaffListComponent implements OnInit {
     }
     return true;
   };
+  onEdit(row: STAFF) {
+    const dialogRef = this._dialog.open(StaffInputComponent, {
+      width: '800px',
+      data: row,
+    });
+    dialogRef.afterClosed().subscribe(() => {});
+  }
+  onDelete(row: STAFF) {
+    this.service.deleteStaff(row._id).subscribe(
+      (data) => {
+        this.snackBar.openSnackBar('Deleted Successfully', true);
+        this.service.reloadTableList('Delete');
+      },
+      () => {
+        this.snackBar.openSnackBar('Delete Failed', false);
+      }
+    );
+  }
 }

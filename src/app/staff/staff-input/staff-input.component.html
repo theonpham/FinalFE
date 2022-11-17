@@ -23,7 +23,7 @@
     class="form-container"
     (keydown.enter)="$event.preventDefault()"
   >
-    <div fxLayout="column" class="form" style="height: calc(100vh - 500px)">
+    <div fxLayout="column" class="form" style="height: calc(100vh - 700px)">
       <div fxLayout="column">
         <mat-label>Họ và Tên<span style="color: red">*</span></mat-label>
         <mat-form-field appearance="fill" fxFlex>
@@ -40,12 +40,12 @@
         <section class="example-section" style="padding-top: 16px">
           <mat-label>Giới tính :<span style="color: red">*</span></mat-label>
           <mat-radio-group formControlName="gender" style="padding-left: 16px">
-            <mat-radio-button class="example-margin" value="0"
+            <mat-radio-button class="example-margin" [value]="0"
               >Nam</mat-radio-button
             >
             <mat-radio-button
               class="example-margin"
-              value="1"
+              [value]="1"
               style="padding-left: 16px"
               >Nữ</mat-radio-button
             >
