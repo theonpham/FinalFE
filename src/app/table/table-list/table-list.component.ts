@@ -14,20 +14,18 @@ import { MatDialog } from '@angular/material/dialog';
 export class TableListComponent implements OnInit {
   data: TABLE[] = [];
   filteredData: TABLE[] = [];
-  floor = 1;
   init = false;
-
   constructor(private service: TableService, private _dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.reload(this.floor);
+    this.reload();
     this.service.filterValue$.subscribe((data) => {
       this.filterPredicate(data);
     });
   }
-  reload(floor: number) {
+  reload() {
     this.init = false;
-    this.service.getAllTableList(floor).subscribe((data) => {
+    this.service.getAllTableList().subscribe((data) => {
       this.data = data;
       this.filteredData = this.data;
       this.init = true;
@@ -35,12 +33,15 @@ export class TableListComponent implements OnInit {
   }
   filterPredicate(value: any) {
     if (value != null && !!this.data) {
-      this.filteredData = this.data.filter((food) => {
+      this.filteredData = this.data.filter((table) => {
         let match = true;
         if (!!value?.name) {
           match =
             match &&
-            food.name.toLowerCase().includes(value?.name.toLowerCase());
+            table.name.toLowerCase().includes(value?.name.toLowerCase());
+        }
+        if (!!value?.floor) {
+          match = match && table.floor == value.floor;
         }
         return match;
       });

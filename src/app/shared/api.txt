@@ -1,3 +1,4 @@
+
 // For foods
 [GET] foods: https://mrestaurantorder.herokuapp.com/restaurant/api/foods
 
@@ -23,6 +24,10 @@
 
 [POST] table: https://mrestaurantorder.herokuapp.com/restaurant/api/table/create
 
+[GET] table: https://mrestaurantorder.herokuapp.com/restaurant/api/table/all
+https://mrestaurantorder.herokuapp.com/restaurant/api/table/all
+https://mrestaurantorder.herokuapp.com/restaurant/api/bill/:idTable
+
 //Floor
 [GET] floor: https://mrestaurantorder.herokuapp.com/restaurant/api/floor/all
 
@@ -33,6 +38,10 @@
 
 [POST] staff: https://mrestaurantorder.herokuapp.com/restaurant/api/staff/create
 
+[PUT] staff: https://mrestaurantorder.herokuapp.com/restaurant/api/staff/update/:id?_method=PUT
+
+[DELETE] staff: https://mrestaurantorder.herokuapp.com/restaurant/api/staff/delete/:id?_method=DELETE
+
 // Bill
 [GET] bill: https://mrestaurantorder.herokuapp.com/restaurant/api/bill/all
 
@@ -40,8 +49,12 @@
 
 [POST] bill: https://mrestaurantorder.herokuapp.com/restaurant/api/bill/create
 
+[POST] bill: https://mrestaurantorder.herokuapp.com/restaurant/api/bill/:idTable
+
 [PUT] bill: https://mrestaurantorder.herokuapp.com/restaurant/api/bill/update/:id?_method=PUT
+
+
 
 =====> Results returned for each [PUT], [DELETE],[POST] :
 {"message":  " ' Method' successfully "}
-Đang hiển thị 6620295680743644217.
+Đang hiển thị 5948451430138858239.

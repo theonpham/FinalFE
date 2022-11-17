@@ -9,8 +9,8 @@ export class TableService {
   private _filterValue = new BehaviorSubject<any>(null);
   public filterValue$ = this._filterValue.asObservable();
   constructor(private http: ApiHttpService) {}
-  getAllTableList(floor: number): Observable<TABLE[]> {
-    return this.http.get(getTableListURL(floor));
+  getAllTableList(): Observable<TABLE[]> {
+    return this.http.get(getTableListURL());
   }
   addTable(input: TABLE): Observable<any> {
     return this.http.post(addTableURL, input);
