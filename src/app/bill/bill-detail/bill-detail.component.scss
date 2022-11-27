@@ -1,0 +1,56 @@
+.food-detail-container {
+    padding: 16px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+
+        .header-title {
+            padding: 8px;
+
+            .header-content {}
+        }
+    }
+
+    .body {
+        padding: 16px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .food {
+            display: flex;
+            gap: 16px;
+
+            img {
+                width: 220px;
+                height: 180px;
+                mix-blend-mode: normal;
+            }
+
+            .food-info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 16px;
+        padding: 8px 0px;
+        .checkout-action {
+        padding: 16px;
+        box-shadow: 0px 4px 8px rgb(0 0 0 / 12%);
+        cursor: pointer;
+        }
+
+        .print-action {
+        padding: 16px;
+        box-shadow: 0px 4px 8px rgb(0 0 0 / 12%);
+        cursor: pointer;
+        }
+    }
+}

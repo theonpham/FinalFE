@@ -1,0 +1,63 @@
+
+// // For foods
+// [GET] foods: https://restaurant-order.onrender.com/restaurant/api/foods
+
+// // For drinks
+// [GET] drinks: https://restaurant-order.onrender.com/restaurant/api/drinks
+
+// // For update foods and drinks by id
+// [GET] products: https://restaurant-order.onrender.com/restaurant/api/products/all
+
+// [GET] products: https://restaurant-order.onrender.com/restaurant/api/products/all/:category
+
+// [PUT] products:  https://restaurant-order.onrender.com/restaurant/api/products/:id?_method=PUT
+
+// [DELETE] products: https://restaurant-order.onrender.com/restaurant/api/products/:id?_method=DELETE
+
+// =================================================
+
+// // Add product
+// [POST] product: https://restaurant-order.onrender.com/restaurant/api/product/create
+
+// //Table
+// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all/{floor}
+
+// [POST] table: https://restaurant-order.onrender.com/restaurant/api/table/create
+
+// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all
+
+// //Floor
+// [GET] floor: https://restaurant-order.onrender.com/restaurant/api/floor/all
+
+// [POST] floor: https://restaurant-order.onrender.com/restaurant/api/floor/create
+
+// // Staff
+// [GET] staff: https://restaurant-order.onrender.com/restaurant/api/staff/all
+
+// [POST] staff: https://restaurant-order.onrender.com/restaurant/api/staff/create
+
+// [PUT] staff: https://restaurant-order.onrender.com/restaurant/api/staff/update/:id?_method=PUT
+
+// [DELETE] staff: https://restaurant-order.onrender.com/restaurant/api/staff/delete/:id?_method=DELETE
+
+// // Bill
+// [GET] bill: https://restaurant-order.onrender.com/restaurant/api/bill/all
+
+// [GET] bill by status: https://restaurant-order.onrender.com/restaurant/api/bill/all/:status
+
+// [GET] product in bill: https://restaurant-order.onrender.com/restaurant/api/bill/:idTable/product
+
+// [POST] bill: https://restaurant-order.onrender.com/restaurant/api/bill/create
+
+// [GET] bill: https://restaurant-order.onrender.com/restaurant/api/bill/:idTable
+
+// [PUT] bill: https://restaurant-order.onrender.com/restaurant/api/bill/update/:id?_method=PUT
+
+// [POST] add product to bill: https://restaurant-order.onrender.com/restaurant/api//bill/product/add/:idBill
+
+
+
+
+// =====> Results returned for each [PUT], [DELETE],[POST] :
+// {"message":  " ' Method' successfully "}
+// Đang hiển thị 1995895672484369621.

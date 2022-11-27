@@ -5,20 +5,20 @@ export interface TABLE {
   floor: number;
 }
 export const getTableListURL = () =>
-  `https://mrestaurantorder.herokuapp.com/restaurant/api/table/all`;
+  `https://restaurant-order.onrender.com/restaurant/api/table/all`;
 export const addTableURL =
-  'https://mrestaurantorder.herokuapp.com/restaurant/api/table/create';
+  'https://restaurant-order.onrender.com/restaurant/api/table/create';
 
 // //Table
-// [GET] table: https://mrestaurantorder.herokuapp.com/restaurant/api/table/all/{floor}
+// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all/{floor}
 
-// [POST] table: https://mrestaurantorder.herokuapp.com/restaurant/api/table/create
+// [POST] table: https://restaurant-order.onrender.com/restaurant/api/table/create
 
-// [GET] table: https://mrestaurantorder.herokuapp.com/restaurant/api/table/all
-// https://mrestaurantorder.herokuapp.com/restaurant/api/table/all
-// https://mrestaurantorder.herokuapp.com/restaurant/api/bill/:idTable
+// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all
+// https://restaurant-order.onrender.com/restaurant/api/table/all
+// https://restaurant-order.onrender.com/restaurant/api/bill/:idTable
 
 // //Floor
-// [GET] floor: https://mrestaurantorder.herokuapp.com/restaurant/api/floor/all
+// [GET] floor: https://restaurant-order.onrender.com/restaurant/api/floor/all
 
-// [POST] floor: https://mrestaurantorder.herokuapp.com/restaurant/api/floor/create
+// [POST] floor: https://restaurant-order.onrender.com/restaurant/api/floor/create
