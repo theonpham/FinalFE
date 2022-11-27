@@ -21,7 +21,7 @@
         .food {
             display: flex;
             gap: 16px;
-
+            justify-content: space-between;
             img {
                 width: 220px;
                 height: 180px;
