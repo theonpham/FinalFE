@@ -1,50 +1,46 @@
 <div class="food-detail-container">
-    <div id="htmlData">
-        <div class="header">
-            <div class="header-title">
-                Tạo vào
-                <div class="header-content">
-                    {{selectedBill.createdAt | date: "dd/MM/yyyy HH:mm:ss"}}
-                </div>
-            </div>
-            <div class="header-title">
-                Bàn
-                <div class="header-content">
-                    {{selectedBill.idTable }}
-                </div>
-            </div>
-            <div class="header-title">
-                Thanh toán
-                <div class="header-content">
-                    {{selectedBill.status ? "Đã thanh toán" : "Chưa thanh toán"}}
-                </div>
-            </div>
-            <div class="header-title">
-                Tổng hóa đơn
-                <div class="header-content">
-                    {{totalBill| number: "1.3-3"}} VND
-                </div>
-            </div>
+  <div id="htmlData">
+    <div class="header">
+      <div class="header-title">
+        Tạo vào
+        <div class="header-content">
+          {{ selectedBill.createdAt | date: "dd/MM/yyyy HH:mm:ss" }}
         </div>
-        <div class="body">
-            <div *ngFor="let food of selectedBill.foods" class="food">
-                <div class="food-info">
-                    <span class="food-name">Tên : {{ food.name }}</span>
-                    <span class="food-price">Giá {{ food.price | number: "1.3-3"}} VND</span>
-                    <span class="food-amount">Số lượng : {{ food.total / food.price }}</span>
-                    <span class="food-totall">Tổng giá {{ food.total | number: "1.3-3"}} VND</span>
-                </div>
-                <img alt="No image" src="{{ food.urlImage }}" />
-            </div>
+      </div>
+      <div class="header-title">
+        Bàn
+        <div class="header-content">
+          {{ selectedBill.idTable }}
         </div>
+      </div>
+      <div class="header-title">
+        Thanh toán
+        <div class="header-content">
+          {{ selectedBill.status ? "Đã thanh toán" : "Chưa thanh toán" }}
+        </div>
+      </div>
     </div>
+    <div class="body">
+      <table>
+        <th>Tên</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Tổng giá</th>
+        <tr *ngFor="let food of selectedBill.foods">
+          <td>{{ food.name }}</td>
+          <td>{{ food.price | number: "1.3-3" }} VND</td>
+          <td>{{ food.total / food.price }}</td>
+          <td>{{ food.total | number: "1.3-3" }} VND</td>
+        </tr>
+      </table>
+    </div>
+    <div class="total-price">
+      Tổng hóa đơn : {{ selectedBill?.totalPrice | number: "1.3-3" }} VND
+    </div>
+  </div>
 
-    <div class="footer">
-        <div class="checkout-action">
-            Xác nhận thanh toán
-        </div>
-        <div class="print-action" (click)="openPDF()">
-            In hóa đơn
-        </div>
-    </div>
+  <div class="footer">
+    <div class="checkout-action">Xác nhận thanh toán</div>
+    <div class="print-action" (click)="openPDF()">In hóa đơn</div>
+  </div>
 </div>

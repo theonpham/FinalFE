@@ -4,35 +4,26 @@
     .header {
         display: flex;
         justify-content: space-between;
-
+        gap: 8px;
         .header-title {
-            padding: 8px;
-
             .header-content {}
         }
     }
 
     .body {
         padding: 16px 0px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        .food {
-            display: flex;
-            gap: 16px;
-            justify-content: space-between;
-            img {
-                width: 220px;
-                height: 180px;
-                mix-blend-mode: normal;
-            }
-
-            .food-info {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-            }
+        table{
+            width: 100%;
+        }
+        table,
+        th,
+        td {
+          border: 1px solid #d9dbdd;
+          border-collapse: collapse;
+          padding: 10px 8px;
+          vertical-align: middle;
+          text-align: center;
+          word-wrap: break-word;
         }
     }
 
