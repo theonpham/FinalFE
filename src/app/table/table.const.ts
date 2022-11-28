@@ -3,6 +3,7 @@ export interface TABLE {
   name: string;
   capacity: number;
   floor: number;
+  status : any;
 }
 export const getTableListURL = () =>
   `https://restaurant-order.onrender.com/restaurant/api/table/all`;
