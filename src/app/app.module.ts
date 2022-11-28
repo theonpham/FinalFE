@@ -30,6 +30,7 @@ import { BillDetailComponent } from './bill/bill-detail/bill-detail.component';
 import { BillFilterComponent } from './bill/bill-filter/bill-filter.component';
 import { BillInputComponent } from './bill/bill-input/bill-input.component';
 import { BillListComponent } from './bill/bill-list/bill-list.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { BillListComponent } from './bill/bill-list/bill-list.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

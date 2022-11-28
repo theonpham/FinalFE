@@ -3,37 +3,41 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import moment from 'moment';
 import { SnackBarCustomService } from 'src/app/shared/snackbar.service';
 import { BillDetailComponent } from '../bill-detail/bill-detail.component';
 import { BILL } from '../bill.const';
 import { BillService } from '../bill.service';
+import * as fs from 'file-saver';
+import { Subject, takeUntil } from 'rxjs';
+import { Workbook } from 'exceljs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-bill-list',
   templateUrl: './bill-list.component.html',
-  styleUrls: ['./bill-list.component.scss']
+  styleUrls: ['./bill-list.component.scss'],
 })
 export class BillListComponent implements OnInit {
   dataSource!: MatTableDataSource<BILL>;
   data: BILL[] = [];
   init = false;
-  displayedColumns = [
-    'createdAt',
-    'totalPrice',
-    'status',
-    'checkoutType',
-  ];
+  displayedColumns = ['createdAt', 'totalPrice', 'status', 'checkoutType'];
+  excelColumn: any[] = ['createdAt', 'totalPrice', 'status', 'checkoutType'];
+  excelHeader: any[] = ['Ngày', 'Tổng đơn', 'Trạng thái', 'Thanh toán loại'];
+  excelData: any[] = [];
   filterValue: any;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private _dialog: MatDialog,
     private service: BillService,
-    private snackBar: SnackBarCustomService
-  ) { }
+    private snackBar: SnackBarCustomService,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit(): void {
-    this.service.getAllBill().subscribe((data)=>{
+    this.service.getAllBill().subscribe((data) => {
       this.init = true;
       this.data = data;
       this.dataSource = new MatTableDataSource(data);
@@ -57,7 +61,8 @@ export class BillListComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.reloadFilter();
-    })
+      this.excelLoad();
+    });
   }
   reloadFilter() {
     this.service.filterValue$.subscribe((filterValue) => {
@@ -74,20 +79,20 @@ export class BillListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(() => {});
   }
-  renderCheckOutType(row:BILL){
+  renderCheckOutType(row: BILL) {
     const type = row.checkoutType;
-    if(row.status){
-      if(type==0){
-        return 'Tiền mặt'
+    if (row.status) {
+      if (type == 0) {
+        return 'Tiền mặt';
       }
-      if(type==1){
-        return 'Chuyển khoản'
+      if (type == 1) {
+        return 'Chuyển khoản';
       }
-      if(type==2){
-        return 'Quẹt thẻ'
+      if (type == 2) {
+        return 'Quẹt thẻ';
       }
     }
-    return '---'
+    return '---';
   }
   filterPredicate = (staff: BILL): boolean => {
     // if (this.filterValue) {
@@ -109,4 +114,106 @@ export class BillListComponent implements OnInit {
     // }
     return true;
   };
+  createExcelData(dataSource: BILL[]) {
+    let eachRowArray: any = [];
+    const data = [...dataSource];
+    [...data].forEach((eachBill: any) => {
+      [...this.excelColumn].forEach((columnName: string) => {
+        if (columnName == 'createdAt') {
+          if (eachBill[columnName] === null) eachRowArray.push('');
+          else
+            eachRowArray.push(
+              moment(eachBill[columnName]).format('DD/MM/yyyy')
+            );
+        } else {
+          if (eachBill[columnName] === null) eachRowArray.push('');
+          else if (
+            eachBill[columnName] === true ||
+            eachBill[columnName].toString() === 'true'
+          )
+            eachRowArray.push('Yes');
+          else if (
+            eachBill[columnName] === false ||
+            eachBill[columnName].toString() === 'false'
+          )
+            eachRowArray.push('No');
+          else eachRowArray.push(eachBill[columnName]);
+        }
+      });
+      this.excelData.push(eachRowArray);
+      eachRowArray = [];
+    });
+    // The row on Excel is sorted by name
+    this.excelData.sort((a, b) => {
+      if (a[0] < b[0]) {
+        return -1;
+      }
+      if (a[0] > b[0]) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+  private readonly _destroying$ = new Subject<void>();
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
+  }
+  excelLoad() {
+    this.service.exportExcel$
+      .pipe(takeUntil(this._destroying$))
+      .subscribe((sheetName) => {
+        if (sheetName) {
+          // reset data here;
+          this.excelData = [];
+          // create data here;
+          this.createExcelData(this.data);
+          const fileName =
+            'Bill_' + this.datePipe.transform(new Date(), 'ddMMyyyy') + '.xlsx';
+          // Create workbook and worksheet
+          const workbook = new Workbook();
+          // sheet name
+          const worksheet = workbook.addWorksheet('Bill', {
+            views: [{ state: 'frozen', ySplit: 1 }],
+          });
+          // Add Header Row
+          const headerList = [...this.excelHeader];
+          const headerRow = worksheet.addRow(headerList);
+          // adjust each columns(width)
+          for (let column = 1; column < headerList.length + 1; column++) {
+            worksheet.getColumn(column).width = 40;
+          }
+          // Cell Style : Fill and Border
+          headerRow.eachCell((cell: any) => {
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: { argb: 'FFFFFF00' },
+              bgColor: { argb: 'FF0000FF' },
+            };
+            cell.border = {
+              top: { style: 'thin' },
+              left: { style: 'thin' },
+              bottom: { style: 'thin' },
+              right: { style: 'thin' },
+            };
+          });
+
+          this.excelData.forEach((eachBill) => {
+            worksheet.addRow(eachBill);
+          });
+          // adjust each columns(width)
+          for (let column = 1; column < +1; column++) {
+            worksheet.getColumn(column).width = 40;
+          }
+          // Generate Excel File with given name
+          workbook.xlsx.writeBuffer().then((data: any) => {
+            const blob = new Blob([data], {
+              type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            });
+            fs.saveAs(blob, fileName);
+          });
+        }
+      });
+  }
 }

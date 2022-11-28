@@ -1,9 +1,25 @@
 <div class="bill-page-container">
-    <div class="bill-toolbar">
-      <div>
-        <app-bill-filter></app-bill-filter>
-      </div>
+  <div class="bill-toolbar">
+    <div>
+      <app-bill-filter></app-bill-filter>
     </div>
-    <app-bill-list></app-bill-list>
+    <div class="action">
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        (click)="exportExcel()"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M26.25 18.75L25.375 17.875L20.625 22.625V11.25H19.375V22.625L14.625 17.875L13.75 18.75L20 25L26.25 18.75ZM26.25 25V27.5H13.75V25H12.5V27.5C12.5 28.25 13 28.75 13.75 28.75H26.25C27 28.75 27.5 28.25 27.5 27.5V25H26.25Z"
+          fill="#45494E"
+        />
+      </svg>
+    </div>
   </div>
-  
+  <app-bill-list></app-bill-list>
+</div>

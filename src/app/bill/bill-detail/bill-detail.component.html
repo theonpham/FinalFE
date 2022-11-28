@@ -34,8 +34,11 @@
         </tr>
       </table>
     </div>
-    <div class="total-price">
+    <div class="total-price" style="font-weight: 700; font-size: 18px">
       Tổng hóa đơn : {{ selectedBill?.totalPrice | number: "1.3-3" }} VND
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 16px">
+      <img src="../../../assets/qr.png" style="width: 150px; height: 150px" />
     </div>
   </div>
 
