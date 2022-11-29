@@ -23,7 +23,7 @@
     class="form-container"
     (keydown.enter)="$event.preventDefault()"
   >
-    <div fxLayout="column" class="form" style="height: calc(100vh - 700px)">
+    <div fxLayout="column" class="form" style="height: calc(100vh - 400px)">
       <div fxLayout="column">
         <mat-label>Họ và Tên<span style="color: red">*</span></mat-label>
         <mat-form-field appearance="fill" fxFlex>
@@ -51,6 +51,18 @@
             >
           </mat-radio-group>
         </section>
+      </div>
+      <div fxLayout="column">
+        <mat-label>Tài khoản<span style="color: red">*</span></mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput type="text" formControlName="account" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-label>Mật khẩu<span style="color: red">*</span></mat-label>
+        <mat-form-field appearance="fill" fxFlex>
+          <input matInput type="text" formControlName="password" />
+        </mat-form-field>
       </div>
     </div>
     <div class="footer">

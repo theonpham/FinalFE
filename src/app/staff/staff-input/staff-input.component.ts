@@ -16,6 +16,8 @@ export class StaffInputComponent implements OnInit {
     name: [null, [Validators.required]],
     phoneNumber: [null, [Validators.required]],
     gender: [null, [Validators.required]],
+    account: [null, [Validators.required]],
+    password: [null, [Validators.required]],
   });
   constructor(
     private fb: FormBuilder,
@@ -37,6 +39,8 @@ export class StaffInputComponent implements OnInit {
       name: staff.name,
       phoneNumber: staff.phoneNumber,
       gender: staff.gender,
+      account: staff.account,
+      password: staff.password,
     });
   }
   onSubmit() {

@@ -28,6 +28,18 @@
           {{ row.gender === 0 ? "Nam" : "Nữ" }}
         </td>
       </ng-container>
+      <ng-container matColumnDef="account">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Tài khoản
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row?.account }}</td>
+      </ng-container>
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Mật khẩu
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row?.password }}</td>
+      </ng-container>
       <ng-container matColumnDef="createdAt">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
           Tham gia vào

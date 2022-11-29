@@ -22,6 +22,8 @@ export class StaffListComponent implements OnInit {
     'name',
     'phoneNumber',
     'gender',
+    'account',
+    'password',
     'createdAt',
     'updatedAt',
     'actions',
