@@ -40,6 +40,9 @@ export class TableListComponent implements OnInit {
             match &&
             table.name.toLowerCase().includes(value?.name.toLowerCase());
         }
+        if (!!value?.status) {
+          match = match && table.status === value.status;
+        }
         if (!!value?.floor) {
           match = match && table.floor == value.floor;
         }

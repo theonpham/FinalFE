@@ -12,6 +12,7 @@ import { TableService } from '../table.service';
 })
 export class TableInputComponent implements OnInit {
   selectedTable!: TABLE;
+  floorOption: any;
   formGroup: FormGroup = this.fb.group({
     name: [null, [Validators.required]],
     capacity: [null, [Validators.required]],
@@ -31,6 +32,9 @@ export class TableInputComponent implements OnInit {
       this.selectedTable = this.data;
       this.patchValue(this.selectedTable);
     }
+    this.service.getAllFloorList().subscribe((data) => {
+      this.floorOption = data;
+    });
   }
   patchValue(table: TABLE) {
     this.formGroup.patchValue({

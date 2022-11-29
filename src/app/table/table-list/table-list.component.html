@@ -5,12 +5,15 @@
       class="table"
       *ngFor="let table of filteredData"
       (click)="openDetail(table)"
-      [ngClass]="{'table-occupied' : table.status === 1 , 'table-unoccupied' : table.status === 0}"
+      [ngClass]="table.status === 1 ? 'table-occupied' : 'table-unoccupied'"
     >
       <div class="table-info">
         <span class="table-name">{{ table.name }}</span>
         <span class="table-capacity">Chỗ ngồi {{ table.capacity }} chỗ</span>
         <span class="table-floor">Tầng {{ table.floor }}</span>
+        <span class="table-name">
+          {{ table.status === 1 ? "Đã ngồi" : "Còn trống" }}</span
+        >
       </div>
     </div>
   </div>

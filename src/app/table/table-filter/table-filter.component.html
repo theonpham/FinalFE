@@ -14,13 +14,16 @@
       </div>
       <div fxLayout="column">
         <mat-form-field appearance="fill">
-          <input
-            matInput
-            type="search"
+          <mat-select
             placeholder="Trạng thái"
+            floatlLabel="never"
             formControlName="status"
-            (input)="changeFilterValue(formGroup.value)"
-          />
+            (selectionChange)="changeFilterValue(formGroup.value)"
+          >
+            <mat-option [value]="null"> --- </mat-option>
+            <mat-option [value]="0"> Còn trống </mat-option>
+            <mat-option [value]="1"> Đã ngồi </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div fxLayout="column">

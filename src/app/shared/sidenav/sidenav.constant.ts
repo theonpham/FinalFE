@@ -26,14 +26,14 @@ export const SIDENAV_CONTENTS: SideNav[] = [
     svgIcon: 'food',
     navLink: '/food',
   },
-  {
-    name: 'Thể loại',
-    svgIcon: 'food-type',
-    navLink: '/food-type',
-  },
-  {
-    name: 'Khách hàng thân thiết',
-    svgIcon: 'client',
-    navLink: '/client',
-  },
+  // {
+  //   name: 'Thể loại',
+  //   svgIcon: 'food-type',
+  //   navLink: '/food-type',
+  // },
+  // {
+  //   name: 'Khách hàng thân thiết',
+  //   svgIcon: 'client',
+  //   navLink: '/client',
+  // },
 ];

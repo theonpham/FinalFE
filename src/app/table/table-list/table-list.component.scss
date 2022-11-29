@@ -4,7 +4,7 @@
   .table-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 29.1px;
     .table {
       height: 135px;
       width: 135px;
@@ -31,10 +31,11 @@
       }
     }
     .table-occupied {
-      background: #a7f0ba;
+      background: #ffd7d9;
     }
     .table-unoccupied {
-      background: #ffd7d9;
+      background: #a7f0ba;
+
     }
   }
 }

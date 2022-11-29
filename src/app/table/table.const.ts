@@ -3,13 +3,20 @@ export interface TABLE {
   name: string;
   capacity: number;
   floor: number;
-  status : any;
+  status: any;
+}
+export interface FLOOR {
+  _id: string;
+  numberFloor: string;
 }
 export const getTableListURL = () =>
   `https://restaurant-order.onrender.com/restaurant/api/table/all`;
 export const addTableURL =
   'https://restaurant-order.onrender.com/restaurant/api/table/create';
-
+export const getFloorListURL =
+  'https://restaurant-order.onrender.com/restaurant/api/floor/all';
+export const addFloorURL =
+  'https://restaurant-order.onrender.com/restaurant/api/floor/create';
 // //Table
 // [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all/{floor}
 

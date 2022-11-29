@@ -41,9 +41,34 @@
       <div fxLayout="column">
         <mat-label>Tầng <span style="color: red">*</span></mat-label>
         <mat-form-field appearance="fill" fxFlex>
-          <input matInput type="number" formControlName="floor" />
+          <mat-select floatlLabel="never" formControlName="floor">
+            <mat-option [value]="null"> --- </mat-option>
+            <mat-option
+              *ngFor="let option of floorOption"
+              [value]="option.numberFloor"
+            >
+              {{ option.numberFloor }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
+      <!-- <div class="btn-add">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+            fill="white"
+          />
+        </svg>
+        <span> Thêm tầng </span>
+      </div> -->
     </div>
     <div class="footer">
       <div class="form-action">

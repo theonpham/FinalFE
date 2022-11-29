@@ -5,6 +5,10 @@ export interface STAFF {
   gender: string;
   createdAt: string;
   updatedAt: string;
+  idFloor: string;
+  account: string;
+  password: string;
+  floorNumber: string;
 }
 export const getStaffListURL =
   'https://restaurant-order.onrender.com/restaurant/api/staff/all';
