@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { SIDENAV_CONTENTS } from './sidenav.constant';
 
 @Component({
@@ -16,6 +17,7 @@ export class SidenavComponent implements OnInit {
     matIconRegistry: MatIconRegistry,
     domSanitizer: DomSanitizer,
     private pLocation: PlatformLocation,
+    private cookieService: CookieService,
     private router: Router
   ) {
     // regis icon
@@ -69,5 +71,9 @@ export class SidenavComponent implements OnInit {
   }
   selectMenu(link: string) {
     this.selectedMenu = link;
+  }
+  onLogout() {
+    this.cookieService.delete('login');
+    this.router.navigate([`/login`]);
   }
 }

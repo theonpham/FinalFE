@@ -1,63 +1,71 @@
 
-// // For foods
-// [GET] foods: https://restaurant-order.onrender.com/restaurant/api/foods
+// For foods
+[GET] foods: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/foods
 
-// // For drinks
-// [GET] drinks: https://restaurant-order.onrender.com/restaurant/api/drinks
+// For drinks
+[GET] drinks: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/drinks
 
-// // For update foods and drinks by id
-// [GET] products: https://restaurant-order.onrender.com/restaurant/api/products/all
+// For update foods and drinks by id
+[GET] products: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/products/all
 
-// [GET] products: https://restaurant-order.onrender.com/restaurant/api/products/all/:category
+[GET] products: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/products/all/:category
 
-// [PUT] products:  https://restaurant-order.onrender.com/restaurant/api/products/:id?_method=PUT
+[PUT] products:  https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/products/:id?_method=PUT
 
-// [DELETE] products: https://restaurant-order.onrender.com/restaurant/api/products/:id?_method=DELETE
+[DELETE] products: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/products/:id?_method=DELETE
 
-// =================================================
+=================================================
 
-// // Add product
-// [POST] product: https://restaurant-order.onrender.com/restaurant/api/product/create
+// Add product
+[POST] product: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/product/create
 
-// //Table
-// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all/{floor}
+//Table
+[GET] table: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/all/{floor}
 
-// [POST] table: https://restaurant-order.onrender.com/restaurant/api/table/create
+[POST] table: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/create
 
-// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all
+[GET] table: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/all
 
-// //Floor
-// [GET] floor: https://restaurant-order.onrender.com/restaurant/api/floor/all
+//Floor
+[GET] floor: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/floor/all
 
-// [POST] floor: https://restaurant-order.onrender.com/restaurant/api/floor/create
+[POST] floor: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/floor/create
 
-// // Staff
-// [GET] staff: https://restaurant-order.onrender.com/restaurant/api/staff/all
+// Staff
+[GET] staff: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/staff/all
 
-// [POST] staff: https://restaurant-order.onrender.com/restaurant/api/staff/create
+[POST] staff: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/staff/create
 
-// [PUT] staff: https://restaurant-order.onrender.com/restaurant/api/staff/update/:id?_method=PUT
+[PUT] staff: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/staff/update/:id?_method=PUT
 
-// [DELETE] staff: https://restaurant-order.onrender.com/restaurant/api/staff/delete/:id?_method=DELETE
+[DELETE] staff: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/staff/delete/:id?_method=DELETE
 
-// // Bill
-// [GET] bill: https://restaurant-order.onrender.com/restaurant/api/bill/all
+[POST] login:  https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/staff/login
 
-// [GET] bill by status: https://restaurant-order.onrender.com/restaurant/api/bill/all/:status
+// Bill
+[GET] bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/all
 
-// [GET] product in bill: https://restaurant-order.onrender.com/restaurant/api/bill/:idTable/product
+[GET] bill by status: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/all/:status
 
-// [POST] bill: https://restaurant-order.onrender.com/restaurant/api/bill/create
+[GET] product in bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/:idTable/product
 
-// [GET] bill: https://restaurant-order.onrender.com/restaurant/api/bill/:idTable
+[POST] bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/create
 
-// [PUT] bill: https://restaurant-order.onrender.com/restaurant/api/bill/update/:id?_method=PUT
+[GET] bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/:idTable
 
-// [POST] add product to bill: https://restaurant-order.onrender.com/restaurant/api//bill/product/add/:idBill
+[PUT] bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/update/:id?_method=PUT
+
+[POST] add product to bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api//bill/product/add/:idBill
+
+// History:
+
+[GET] all: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/history/all
+
+[POST] bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/history/create
+
+[GET] bill: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/history/:id
 
 
-
-
-// =====> Results returned for each [PUT], [DELETE],[POST] :
-// {"message":  " ' Method' successfully "}
-// Đang hiển thị 1995895672484369621.
+=====> Results returned for each [PUT], [DELETE],[POST] :
+{"message":  " ' Method' successfully "}
+Đang hiển thị 8575711988558260707.

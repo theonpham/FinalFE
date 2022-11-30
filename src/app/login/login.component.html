@@ -8,7 +8,7 @@
           <mat-form-field appearance="fill" fxFlex>
             <input
               matInput
-              formControlName="username"
+              formControlName="account"
               placeholder="Username"
               type="text"
             />
@@ -37,7 +37,7 @@
       </form>
       <div
         class="login-submit-button valid"
-        (click)="onLogin()"
+        (click)="onLogin(formGroup.value)"
         *ngIf="formGroup.valid"
       >
         LOGIN

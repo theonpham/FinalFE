@@ -10,23 +10,23 @@ export interface FLOOR {
   numberFloor: string;
 }
 export const getTableListURL = () =>
-  `https://restaurant-order.onrender.com/restaurant/api/table/all`;
+  `https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/all`;
 export const addTableURL =
-  'https://restaurant-order.onrender.com/restaurant/api/table/create';
+  'https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/create';
 export const getFloorListURL =
-  'https://restaurant-order.onrender.com/restaurant/api/floor/all';
+  'https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/floor/all';
 export const addFloorURL =
-  'https://restaurant-order.onrender.com/restaurant/api/floor/create';
+  'https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/floor/create';
 // //Table
-// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all/{floor}
+// [GET] table: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/all/{floor}
 
-// [POST] table: https://restaurant-order.onrender.com/restaurant/api/table/create
+// [POST] table: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/create
 
-// [GET] table: https://restaurant-order.onrender.com/restaurant/api/table/all
-// https://restaurant-order.onrender.com/restaurant/api/table/all
-// https://restaurant-order.onrender.com/restaurant/api/bill/:idTable
+// [GET] table: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/all
+// https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/table/all
+// https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/bill/:idTable
 
 // //Floor
-// [GET] floor: https://restaurant-order.onrender.com/restaurant/api/floor/all
+// [GET] floor: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/floor/all
 
-// [POST] floor: https://restaurant-order.onrender.com/restaurant/api/floor/create
+// [POST] floor: https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/floor/create

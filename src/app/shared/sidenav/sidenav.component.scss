@@ -6,6 +6,10 @@
     border-bottom: 1px solid #ededed;
   }
   .sidenav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 71px);
     .mat-nav-list .mat-list-item:hover {
       background: rgba(0, 0, 0, 0.04);
     }
@@ -27,6 +31,20 @@
         .nav-name {
           color: #0073ff !important;
         }
+      }
+    }
+    .sidenav-logout {
+      padding: 16px 32px;
+      border-top: #ecedee 1px solid;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+      }
+      span {
+        font-size: 14px;
+        line-height: 18px;
       }
     }
   }

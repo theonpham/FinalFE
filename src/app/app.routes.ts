@@ -11,7 +11,7 @@ import { ClientComponent } from './client/client.component';
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
     data: {
       pageTitle: 'Đăng nhập',
@@ -73,5 +73,5 @@ export const APP_ROUTES: Routes = [
       pageTitle: 'Khách hàng thân thiết',
     },
   },
-  { path: '**', redirectTo: '/login' },
+  { path: '**', redirectTo: '/dashboard' },
 ];
