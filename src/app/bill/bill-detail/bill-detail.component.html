@@ -4,13 +4,13 @@
       <div class="header-title">
         Tạo vào
         <div class="header-content">
-          {{ selectedBill.createdAt | date: "dd/MM/yyyy HH:mm:ss" }}
+          {{ selectedBill.createdAt | date : "dd/MM/yyyy HH:mm:ss" }}
         </div>
       </div>
       <div class="header-title">
         Bàn
         <div class="header-content">
-          {{ selectedBill.idTable }}
+          {{ selectedBill.table.name }}
         </div>
       </div>
       <div class="header-title">
@@ -28,14 +28,14 @@
         <th>Tổng giá</th>
         <tr *ngFor="let food of selectedBill.foods">
           <td>{{ food.name }}</td>
-          <td>{{ food.price | number: "1.3-3" }} VND</td>
+          <td>{{ food.price | number : "1.3-3" }} VND</td>
           <td>{{ food.total / food.price }}</td>
-          <td>{{ food.total | number: "1.3-3" }} VND</td>
+          <td>{{ food.total | number : "1.3-3" }} VND</td>
         </tr>
       </table>
     </div>
     <div class="total-price" style="font-weight: 700; font-size: 18px">
-      Tổng hóa đơn : {{ selectedBill?.totalPrice | number: "1.3-3" }} VND
+      Tổng hóa đơn : {{ selectedBill?.totalPrice | number : "1.3-3" }} VND
     </div>
     <div style="display: flex; justify-content: center; margin-top: 16px">
       <img src="../../../assets/qr.png" style="width: 150px; height: 150px" />
@@ -43,7 +43,9 @@
   </div>
 
   <div class="footer">
-    <div class="checkout-action">Xác nhận thanh toán</div>
+    <div class="checkout-action" (click)="updateBill()">
+      Xác nhận thanh toán
+    </div>
     <div class="print-action" (click)="openPDF()">In hóa đơn</div>
   </div>
 </div>

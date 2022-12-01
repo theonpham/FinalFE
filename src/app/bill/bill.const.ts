@@ -1,3 +1,4 @@
+import { TABLE } from '../table/table.const';
 export interface BILL {
   _id: string;
   date: string;
@@ -5,7 +6,7 @@ export interface BILL {
   totalPrice: any;
   status: any;
   checkoutType: any;
-  idTable: string;
+  table: TABLE;
   createdAt: string;
   foods: {
     _id: string;

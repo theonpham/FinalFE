@@ -22,9 +22,27 @@ export class BillListComponent implements OnInit {
   dataSource!: MatTableDataSource<BILL>;
   data: BILL[] = [];
   init = false;
-  displayedColumns = ['createdAt', 'totalPrice', 'status', 'checkoutType'];
-  excelColumn: any[] = ['createdAt', 'totalPrice', 'status', 'checkoutType'];
-  excelHeader: any[] = ['Ngày', 'Tổng đơn', 'Trạng thái', 'Thanh toán loại'];
+  displayedColumns = [
+    'createdAt',
+    'table',
+    'totalPrice',
+    'status',
+    'checkoutType',
+  ];
+  excelColumn: any[] = [
+    'createdAt',
+    'table',
+    'totalPrice',
+    'status',
+    'checkoutType',
+  ];
+  excelHeader: any[] = [
+    'Ngày',
+    'Bàn',
+    'Tổng đơn',
+    'Trạng thái',
+    'Thanh toán loại',
+  ];
   excelData: any[] = [];
   filterValue: any;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
@@ -94,24 +112,27 @@ export class BillListComponent implements OnInit {
     }
     return '---';
   }
-  filterPredicate = (staff: BILL): boolean => {
-    // if (this.filterValue) {
-    //   let isMatched =
-    //     (!!this.filterValue?.name
-    //       ? staff?.name
-    //           ?.toLowerCase()
-    //           .includes(this.filterValue?.name.toLowerCase())
-    //       : true) &&
-    //     (!!this.filterValue?.phoneNumber
-    //       ? staff?.phoneNumber
-    //           ?.toLowerCase()
-    //           .includes(this.filterValue?.phoneNumber.toLowerCase())
-    //       : true) &&
-    //     (this.filterValue?.gender != null
-    //       ? staff?.gender === this.filterValue?.gender
-    //       : true);
-    //   return isMatched;
-    // }
+  filterPredicate = (bill: BILL): boolean => {
+    if (this.filterValue) {
+      let isMatched =
+        (!!this.filterValue?.table
+          ? bill?.table.name
+              ?.toLowerCase()
+              .includes(this.filterValue?.table.toLowerCase())
+          : true) &&
+        (this.filterValue?.checkoutType != null
+          ? bill?.checkoutType === this.filterValue?.checkoutType
+          : true) &&
+        (this.filterValue?.status != null
+          ? bill?.status === this.filterValue?.status
+          : true);
+      if (!!this.filterValue.date) {
+        const result = moment(bill.createdAt).format('DD/MM/YYYY');
+        const filter = moment(this.filterValue.date).format('DD/MM/YYYY');
+        isMatched = result == filter;
+      }
+      return isMatched;
+    }
     return true;
   };
   createExcelData(dataSource: BILL[]) {
@@ -125,6 +146,9 @@ export class BillListComponent implements OnInit {
             eachRowArray.push(
               moment(eachBill[columnName]).format('DD/MM/yyyy')
             );
+        } else if (columnName == 'table') {
+          if (eachBill?.table?.name === null) eachRowArray.push('');
+          else eachRowArray.push(eachBill?.table?.name);
         } else {
           if (eachBill[columnName] === null) eachRowArray.push('');
           else if (

@@ -3,6 +3,10 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { BILL } from '../bill.const';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { BillService } from '../bill.service';
+import Swal from 'sweetalert2';
+import { SnackBarCustomService } from 'src/app/shared/snackbar.service';
+
 @Component({
   selector: 'app-bill-detail',
   templateUrl: './bill-detail.component.html',
@@ -15,12 +19,12 @@ export class BillDetailComponent implements OnInit {
   totalBill = 0;
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: BILL
+    public data: BILL,
+    private service: BillService,
+    private snackBar: SnackBarCustomService
   ) {}
   ngOnInit(): void {
     this.selectedBill = this.data;
-    console.log(this.selectedBill);
-
     this.selectedBill.foods.forEach((food) => {
       this.totalBill += food.price;
     });
@@ -36,4 +40,33 @@ export class BillDetailComponent implements OnInit {
       PDF.output('dataurlnewwindow');
     });
   }
+  updateBill(): void {
+    Swal.fire({
+      title: 'Xác nhận kiểu thanh toán',
+      input: 'radio',
+      inputOptions: inputOptions,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const input = this.selectedBill;
+        input.status = 1;
+        input.checkoutType = Number.parseInt(result.value);
+        this.service.updateBill(this.selectedBill._id, input).subscribe(
+          (res) => {
+            this.snackBar.openSnackBar('Xác nhận thanh toán thành công', true);
+          },
+          (err) => {
+            this.snackBar.openSnackBar(
+              'Xác nhận thanh toán không thành công',
+              false
+            );
+          }
+        );
+      }
+    });
+  }
 }
+const inputOptions = {
+  0: 'Tiền mặt',
+  1: 'Chuyển khoản',
+  2: 'Quẹt thẻ',
+};

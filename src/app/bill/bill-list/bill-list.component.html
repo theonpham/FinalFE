@@ -1,59 +1,70 @@
 <div class="bill-list-container">
-    <div class="bill-table-container">
-      <table
-        mat-table
-        matSort
-        class="bill-table"
-        [dataSource]="dataSource"
-        fxFill
-        multiTemplateDataRows
-      >
-        <ng-container matColumnDef="createdAt">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
-            Tạo vào
-          </th>
-          <td mat-cell *matCellDef="let row">{{ row?.createdAt  | date: "dd/MM/yyyy HH:mm:ss"}}</td>
-        </ng-container>
-        <ng-container matColumnDef="totalPrice">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
-            Tổng đơn
-          </th>
-          <td mat-cell *matCellDef="let row">
-            {{ row?.totalPrice | number: "1.3-3" }} VND
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
-            Thanh toán
-          </th>
-          <td mat-cell *matCellDef="let row">
-            {{ row.status  ? "Đã thanh toán" : "Chưa thanh toán" }} 
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="checkoutType">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
-            Thanh toán loại
-          </th>
-          <td mat-cell *matCellDef="let row">
-            {{ renderCheckOutType(row)  }}
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="openDetail(row)"></tr>
-        <tr mat-row class="detail-row"></tr>
-      </table>
-      <div
-        class="mat-title"
-        *ngIf="data?.length === 0"
-        fxLayoutAlign="center center"
-      >
-        Không có data
-      </div>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        aria-label="Select page of periodic elements"
-      >
-      </mat-paginator>
+  <div class="bill-table-container">
+    <table
+      mat-table
+      matSort
+      class="bill-table"
+      [dataSource]="dataSource"
+      fxFill
+      multiTemplateDataRows
+    >
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Tạo vào
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row?.createdAt | date : "dd/MM/yyyy HH:mm:ss" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="table">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Bàn
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row?.table.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="totalPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Tổng đơn
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row?.totalPrice | number : "1.3-3" }} VND
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Thanh toán
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.status ? "Đã thanh toán" : "Chưa thanh toán" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="checkoutType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="label">
+          Thanh toán loại
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ renderCheckOutType(row) }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="openDetail(row)"
+      ></tr>
+      <tr mat-row class="detail-row"></tr>
+    </table>
+    <div
+      class="mat-title"
+      *ngIf="data?.length === 0"
+      fxLayoutAlign="center center"
+    >
+      Không có data
     </div>
   </div>
-  
+</div>
+<mat-paginator
+  [pageSizeOptions]="[15, 30, 50]"
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
