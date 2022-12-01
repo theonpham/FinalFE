@@ -1,1 +1,4 @@
-<span>dashboard works!</span>
+<div *ngIf="loaded">
+  <app-today-bill-pie-chart [data]="billData"></app-today-bill-pie-chart>
+</div>
+<mat-spinner *ngIf="!loaded"></mat-spinner>

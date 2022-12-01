@@ -31,6 +31,11 @@ import { BillFilterComponent } from './bill/bill-filter/bill-filter.component';
 import { BillInputComponent } from './bill/bill-input/bill-input.component';
 import { BillListComponent } from './bill/bill-list/bill-list.component';
 import { DatePipe } from '@angular/common';
+import { TodayBillPieChartComponent } from './dashboard/today-bill-pie-chart/today-bill-pie-chart.component';
+import { BillLineChartComponent } from './dashboard/bill-line-chart/bill-line-chart.component';
+import { TopTableComponent } from './dashboard/top-table/top-table.component';
+import { TopFoodComponent } from './dashboard/top-food/top-food.component';
+import { FoodSupplyComponent } from './dashboard/food-supply/food-supply.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +64,11 @@ import { DatePipe } from '@angular/common';
     BillFilterComponent,
     BillInputComponent,
     BillListComponent,
+    TodayBillPieChartComponent,
+    BillLineChartComponent,
+    TopTableComponent,
+    TopFoodComponent,
+    FoodSupplyComponent,
   ],
 
   imports: [
