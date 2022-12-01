@@ -9,21 +9,23 @@
           let isLast = last
         "
       >
-        <a
-          [routerLink]="content.navLink"
-          (click)="selectMenu(content.navLink)"
-          [ngClass]="selectedMenu == content.navLink ? 'active' : ''"
-        >
-          <mat-list-item>
-            <mat-icon
-              [matTooltip]="content.name"
-              matTooltipPosition="above"
-              svgIcon="{{ content.svgIcon }}"
-            >
-            </mat-icon>
-            <span class="nav-name">{{ content.name }}</span>
-          </mat-list-item>
-        </a>
+        <ng-container *ngIf="checkAccess(content)">
+          <a
+            [routerLink]="content.navLink"
+            (click)="selectMenu(content.navLink)"
+            [ngClass]="selectedMenu == content.navLink ? 'active' : ''"
+          >
+            <mat-list-item>
+              <mat-icon
+                [matTooltip]="content.name"
+                matTooltipPosition="above"
+                svgIcon="{{ content.svgIcon }}"
+              >
+              </mat-icon>
+              <span class="nav-name">{{ content.name }}</span>
+            </mat-list-item>
+          </a>
+        </ng-container>
       </ng-container>
     </mat-nav-list>
     <div class="sidenav-logout" (click)="onLogout()">

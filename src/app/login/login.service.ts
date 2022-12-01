@@ -17,7 +17,7 @@ export class LoginService {
   setCurrentUser(input: any) {
     this.currentUser = input;
   }
-  getCurrentUser() {
+  getCurrentUser(): STAFF {
     return this.currentUser;
   }
 }

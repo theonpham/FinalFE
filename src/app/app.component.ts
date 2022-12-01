@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
   setLogin(data: any) {
     if (data) {
       this.loggedIn = true;
+      this.service.setCurrentUser(data);
     } else if (data == false) {
       this.loggedIn = false;
     } else {
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit {
       if (data) {
         this.cookieService.set('login', valueString);
         this.loggedIn = true;
+        this.service.setCurrentUser(data);
       } else {
         this.cookieService.delete('login');
         this.loggedIn = false;

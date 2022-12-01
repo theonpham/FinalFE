@@ -4,7 +4,10 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { LoginService } from 'src/app/login/login.service';
 import { SIDENAV_CONTENTS } from './sidenav.constant';
+import { STAFF } from '../../staff/staff.const';
+import { SideNav } from './sidenav.interface';
 
 @Component({
   selector: 'app-sidenav',
@@ -18,7 +21,8 @@ export class SidenavComponent implements OnInit {
     domSanitizer: DomSanitizer,
     private pLocation: PlatformLocation,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     // regis icon
     matIconRegistry.addSvgIcon(
@@ -55,7 +59,7 @@ export class SidenavComponent implements OnInit {
     );
   }
   selectedMenu: string = '';
-
+  currentUser!: STAFF;
   ngOnInit(): void {
     this.selectedMenu = (this.pLocation as any).location.pathname;
     if (this.selectedMenu == '/') this.selectedMenu = '/dashboard';
@@ -68,6 +72,7 @@ export class SidenavComponent implements OnInit {
         }
       }
     });
+    this.currentUser = this.loginService.getCurrentUser();
   }
   selectMenu(link: string) {
     this.selectedMenu = link;
@@ -75,5 +80,13 @@ export class SidenavComponent implements OnInit {
   onLogout() {
     this.cookieService.delete('login');
     this.router.navigate([`/login`]);
+  }
+  checkAccess(content: SideNav) {
+    if (this.currentUser.account == 'admin') {
+      return true;
+    } else {
+      if (content.code?.includes(this.currentUser.account)) return true;
+    }
+    return false;
   }
 }
