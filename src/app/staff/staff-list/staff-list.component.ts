@@ -22,6 +22,7 @@ export class StaffListComponent implements OnInit {
     'name',
     'phoneNumber',
     'gender',
+    'role',
     'account',
     'password',
     'createdAt',
@@ -123,5 +124,15 @@ export class StaffListComponent implements OnInit {
         this.snackBar.openSnackBar('Delete Failed', false);
       }
     );
+  }
+  renderStaffRole(row: STAFF) {
+    const role = row.role;
+    if (role == '0') {
+      return 'Nhân viên';
+    } else if (role == '1') {
+      return 'Quản trị';
+    } else if (role == '2') {
+      return 'Thu ngân';
+    } else return '---';
   }
 }

@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit {
         this.login.emit(data);
         this.cookieService.set('login', valueString);
         this.snackbarService.openSnackBar('Đăng nhập thành công', true);
-        this.router.navigate([`/dashboard`]);
+        if (data.role == `1`) {
+          this.router.navigate([`/dashboard`]);
+        } else {
+          this.router.navigate([`/table`]);
+        }
       } else {
         this.login.emit(false);
         this.snackbarService.openSnackBar('Đăng nhập thất bại', false);
