@@ -35,7 +35,6 @@
         <mat-form-field appearance="fill" fxFlex>
           <input matInput type="number" formControlName="phoneNumber" />
         </mat-form-field>
-
         <!-- pattern="(84|0[3|5|7|8|9])+([0-9]{8,})\b"  -->
       </div>
       <div fxLayout="column">
@@ -54,6 +53,42 @@
           </mat-radio-group>
         </section>
       </div>
+      <div fxLayout="column">
+        <section class="example-section" style="padding-top: 16px">
+          <mat-label>Vai trò :<span style="color: red">*</span></mat-label>
+          <mat-radio-group formControlName="role" style="padding-left: 16px">
+            <mat-radio-button class="example-margin" [value]="0"
+              >Nhân viên</mat-radio-button
+            >
+            <mat-radio-button
+              class="example-margin"
+              [value]="1"
+              style="padding-left: 16px"
+              >Quản trị</mat-radio-button
+            >
+            <mat-radio-button
+              class="example-margin"
+              [value]="2"
+              style="padding-left: 16px"
+              >Thu ngân</mat-radio-button
+            >
+          </mat-radio-group>
+        </section>
+      </div>
+      <!-- <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-select
+            placeholder="Tầng"
+            floatlLabel="never"
+            formControlName="numberFloor"
+          >
+            <mat-option [value]="null"> --- </mat-option>
+            <mat-option [value]="1"> Tầng 1 </mat-option>
+            <mat-option [value]="2"> Tầng 2 </mat-option>
+            <mat-option [value]="3"> Tầng 3 </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
       <div fxLayout="column">
         <mat-label>Tài khoản<span style="color: red">*</span></mat-label>
         <mat-form-field appearance="fill" fxFlex>

@@ -1,6 +1,8 @@
 ::ng-deep .sidenav-container {
   height: 100vh;
   background-color: #ffff;
+  position: sticky;
+  top: 0;
   .sidenav-logo {
     height: 70px;
     border-bottom: 1px solid #ededed;

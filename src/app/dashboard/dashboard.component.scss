@@ -1,0 +1,9 @@
+.dashboard-container {
+  padding: 24px;
+  overflow: auto;
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+}

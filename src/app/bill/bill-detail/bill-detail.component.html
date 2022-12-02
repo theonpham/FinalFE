@@ -29,7 +29,7 @@
         <tr *ngFor="let food of selectedBill.foods">
           <td>{{ food.name }}</td>
           <td>{{ food.price | number : "1.3-3" }} VND</td>
-          <td>{{ food.total / food.price }}</td>
+          <td>{{ food.amount }}</td>
           <td>{{ food.total | number : "1.3-3" }} VND</td>
         </tr>
       </table>

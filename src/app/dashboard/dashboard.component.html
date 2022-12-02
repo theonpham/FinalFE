@@ -1,4 +1,9 @@
-<div *ngIf="loaded">
-  <app-today-bill-pie-chart [data]="billData"></app-today-bill-pie-chart>
+<div *ngIf="loaded" class="dashboard-container">
+  <!-- <app-today-bill-pie-chart [data]="billData"></app-today-bill-pie-chart> -->
+  <div class="row">
+    <app-top-food [data]="billData"></app-top-food>
+    <app-top-table [data]="billData"></app-top-table>
+    <app-food-supply [data]="foodData"></app-food-supply>
+  </div>
 </div>
 <mat-spinner *ngIf="!loaded"></mat-spinner>

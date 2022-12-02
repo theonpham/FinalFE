@@ -1,1 +1,72 @@
-<p>food-supply works!</p>
+<div class="food-subscriber-container">
+  <div class="header">
+    <span
+      style="
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        color: #000000;
+      "
+      >Số lượng món ăn còn lại</span
+    >
+  </div>
+  <div [@toggleBox]="isExpanded ? 'open' : 'closed'">
+    <div class="row" *ngFor="let food of data">
+      <div class="text">
+        <div
+          class="name"
+          matTooltipPosition="above"
+          matTooltipClass="tooltip-name"
+          matTooltip="{{ food?.name }}"
+          matTooltipClass="tooltip-top-food-name"
+        >
+          {{ food?.name }}
+        </div>
+        <div
+          class="asset number-display"
+          matTooltip="{{ food.total }}"
+          matTooltipPosition="above"
+          matTooltipClass="tooltip-top-food-name"
+        >
+          {{ food.total }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="expand-button-container">
+      <div class="expand-button" (click)="toggleExpand()">
+        <svg
+          width="14"
+          height="8"
+          viewBox="0 0 14 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          *ngIf="isExpanded"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7 0.25L13.25 6.5L12.375 7.375L7 2L1.625 7.375L0.75 6.5L7 0.25Z"
+            fill="#0073FF"
+          />
+        </svg>
+        <svg
+          width="14"
+          height="8"
+          viewBox="0 0 14 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          *ngIf="!isExpanded"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7 7.75L0.75 1.5L1.625 0.625L7 6L12.375 0.625L13.25 1.5L7 7.75Z"
+            fill="#0073FF"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

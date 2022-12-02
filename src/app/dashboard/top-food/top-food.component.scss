@@ -1,0 +1,68 @@
+.top-food-container {
+  min-height: 100px;
+  background: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+.header {
+  height: 48px;
+  border-bottom: 1px #ecedee solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & > span {
+    padding: 16px;
+  }
+}
+.row {
+  display: flex;
+  padding: 9px 16px 9px 16px;
+  border-bottom: 1px #ecedee solid;
+  .medal {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eaf3ff;
+    border-radius: 30px;
+
+    color: #0073ff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .name {
+      margin-left: 12px;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 18px;
+      color: #000000;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      word-break: break-word;
+      max-width: 120px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .asset {
+      color: #003a80;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 22px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

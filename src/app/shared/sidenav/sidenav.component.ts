@@ -82,10 +82,12 @@ export class SidenavComponent implements OnInit {
     this.router.navigate([`/login`]);
   }
   checkAccess(content: SideNav) {
-    if (this.currentUser.account == 'admin') {
+    if (this.currentUser.role == '1') {
       return true;
     } else {
-      if (content.code?.includes(this.currentUser.account)) return true;
+      if (this.currentUser.role == '2') {
+        if (content.code?.includes('staff')) return true;
+      }
     }
     return false;
   }

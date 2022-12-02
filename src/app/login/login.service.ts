@@ -8,7 +8,7 @@ import { STAFF } from '../staff/staff.const';
 })
 export class LoginService {
   loginUrl =
-    'https://restaurant-server-7ls5n2j71-leiverin.vercel.app/restaurant/api/staff/login';
+    'https://restaurant-server-eight.vercel.app/restaurant/api/staff/login';
   currentUser!: STAFF;
   constructor(private http: ApiHttpService) {}
   login(input: any): Observable<STAFF> {

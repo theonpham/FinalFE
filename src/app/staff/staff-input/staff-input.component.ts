@@ -16,6 +16,8 @@ export class StaffInputComponent implements OnInit {
     name: [null, [Validators.required]],
     phoneNumber: [null, [Validators.required]],
     gender: [null, [Validators.required]],
+    role: [null, [Validators.required]],
+    // numberFloor: [null, [Validators.required]],
     account: [null, [Validators.required]],
     password: [null, [Validators.required]],
   });
@@ -39,6 +41,8 @@ export class StaffInputComponent implements OnInit {
       name: staff.name,
       phoneNumber: staff.phoneNumber,
       gender: staff.gender,
+      role: staff.role,
+      // numberFloor: staff.numberFloor,
       account: staff.account,
       password: staff.password,
     });
@@ -46,6 +50,11 @@ export class StaffInputComponent implements OnInit {
   onSubmit() {
     let input = this.formGroup.getRawValue();
     input.gender ? (input.gender = Number.parseInt(input.gender)) : null;
+    input.role ? (input.role = Number.parseInt(input.role)) : null;
+    // input.numberFloor
+    //   ? (input.numberFloor = Number.parseInt(input.numberFloor))
+    //   : null;
+    console.log(input);
     if (!this.selectedStaff) {
       this.service.addStaff(input).subscribe(
         (data) => {
