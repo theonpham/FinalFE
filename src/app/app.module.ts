@@ -36,7 +36,7 @@ import { BillLineChartComponent } from './dashboard/bill-line-chart/bill-line-ch
 import { TopTableComponent } from './dashboard/top-table/top-table.component';
 import { TopFoodComponent } from './dashboard/top-food/top-food.component';
 import { FoodSupplyComponent } from './dashboard/food-supply/food-supply.component';
-
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +72,7 @@ import { FoodSupplyComponent } from './dashboard/food-supply/food-supply.compone
   ],
 
   imports: [
+    NgChartsModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,

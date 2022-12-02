@@ -1,1 +1,63 @@
-<p>today-bill-pie-chart works!</p>
+<div class="today-bill-container">
+  <div class="header">
+    <div class="title">Tổng hóa đơn hôm nay</div>
+  </div>
+  <div class="chart-container">
+    <div class="donut-chart">
+      <div class="total-bill">
+        <div>
+          <p
+            style="
+              color: #003a80;
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 8px;
+              text-align: center;
+            "
+          >
+            Total
+          </p>
+          <p
+            style="
+              color: #003a80;
+              font-weight: 300;
+              font-size: 18px;
+              line-height: 30px;
+            "
+          >
+            {{ totalBillToday | number : "1.3-3" }} VND
+          </p>
+        </div>
+        <div class="total-bill-number">
+          <div style="font-size: 12px">
+            <span style="font-weight: bold">{{ totalNumberBill }} Hóa đơn</span>
+          </div>
+        </div>
+      </div>
+      <canvas
+        baseChart
+        [type]="'pie'"
+        [datasets]="pieChartDatasets"
+        [labels]="pieChartLabels"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend"
+      >
+      </canvas>
+    </div>
+    <div class="xPlane">
+      <div class="xPlane-sub">
+        <span class="xPlane-name">Tiền mặt</span>
+        <span class="xPlane-amount">{{ totalCheckOutType0 }} Đơn</span>
+      </div>
+      <div class="xPlane-sub">
+        <span class="xPlane-name">Chuyển khoản</span>
+        <span class="xPlane-amount">{{ totalCheckOutType1 }} Đơn</span>
+      </div>
+      <div class="xPlane-sub">
+        <span class="xPlane-name">Thanh toán</span>
+        <span class="xPlane-amount">{{ totalCheckOutType2 }} Đơn</span>
+      </div>
+    </div>
+  </div>
+</div>

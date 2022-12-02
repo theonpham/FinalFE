@@ -1,9 +1,17 @@
 .dashboard-container {
   padding: 24px;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .chart-row {
+    display: grid;
+    grid-template-columns: 0.4835fr 1fr;
     gap: 24px;
   }
 }
