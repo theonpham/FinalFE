@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 import moment from 'moment';
 import { start } from 'repl';
 import { BILL } from 'src/app/bill/bill.const';
@@ -19,21 +19,17 @@ import { BILL } from 'src/app/bill/bill.const';
 })
 export class BillLineChartComponent implements OnInit {
   @Input() data!: BILL[];
-  public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        data: [65, 59, 80, 81, 56, 55, 40],
-        label: 'Series A',
-        fill: false,
-        tension: 0.5,
-        borderColor: '#59C8FF',
-        backgroundColor: '#FFFFFF',
-        pointBackgroundColor: '#004DAA',
-      },
-    ],
-  };
-  public lineChartOptions: ChartOptions<'line'> = {
+  chartData :ChartDataset[]= [{
+    data: [],
+    label: 'Doanh Thu',
+    fill: false,
+    tension: 0.5,
+    borderColor: '#59C8FF',
+    backgroundColor: '#FFFFFF',
+    pointBackgroundColor: '#004DAA',
+  }];
+  chartLabel:any[]=[];
+  public lineChartOptions: ChartOptions= {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -59,7 +55,7 @@ export class BillLineChartComponent implements OnInit {
     from: [null],
     to: [null],
   });
-  dateHolder = 'Tháng trước';
+  dateHolder = 'Một tháng trước';
   @ViewChild('selection') selection!: ElementRef;
   constructor(private renderer: Renderer2, private fb: FormBuilder) {
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -99,8 +95,55 @@ export class BillLineChartComponent implements OnInit {
       this.end.getMonth() - 1,
       this.end.getDate()
     );
+    this.reload()
   }
-  reload() {}
+  reload() {
+    const filteredData = this.data.filter((bill) => {
+      const billDate = moment(bill.createdAt).valueOf();
+      if(!this.start && !this.end){
+        return true;
+      }else if (!this.start && this.end){
+        return billDate <= moment(this.end).add(1, 'days').valueOf()
+      } else if (this.start && !this.end){
+        moment(this.start).valueOf() <= billDate
+      }
+      return (
+        moment(this.start).valueOf() <= billDate &&
+        billDate <= moment(this.end).add(1, 'days').valueOf()
+      );
+    });
+    // Reset chart data
+    this.chartData[0].data = [];
+    this.chartLabel = [];
+    const data = this.getBillDateTotal(filteredData);
+    console.log(data);
+    data.forEach((bill:any)=>{
+    // @ts-ignore
+      this.chartLabel.push(bill.date);
+    // @ts-ignore
+      this.chartData[0].data.push(bill.total)
+    })
+  }
+  getBillDateTotal(data: any) {
+    const result = [
+      ...data
+        .reduce((r: any, o: any) => {
+          const key = moment(o.createdAt).format('DD/MM/YYYY');
+          const item =
+            r.get(key) ||
+            Object.assign({}, o, {
+              total: 0,
+            });
+          item.total += o.totalPrice;
+          return r.set(key, item);
+        }, new Map())
+        .values(),
+    ];
+    result.sort((a, b) => {
+      return a.creatdAt < b.createdAt ? -1 : 1;
+    });
+    return result;
+  }
   selectionChange() {
     const rawValue = this.formGroup?.getRawValue();
     this.renderPlaceHolder();

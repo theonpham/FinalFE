@@ -6,7 +6,7 @@ export interface STAFF {
   createdAt: string;
   updatedAt: string;
   role: string;
-  numberFloor: string;
+  floor: any;
   idFloor: string;
   account: string;
   password: string;

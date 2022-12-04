@@ -1,6 +1,6 @@
 <div class="bill-line-container">
   <div class="header">
-    <div class="title">Thống kê hóa đơn</div>
+    <div class="title">Thống kê doanh thu</div>
     <div class="date-container">
       <span class="date-header">{{ dateHolder }}</span>
       <div class="date-icon" #selection>
@@ -96,7 +96,8 @@
     <canvas
       baseChart
       [type]="'line'"
-      [data]="lineChartData"
+      [datasets]="chartData"
+      [labels]="chartLabel"
       [options]="lineChartOptions"
       [legend]="lineChartLegend"
     >

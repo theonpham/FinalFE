@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import moment from 'moment';
 import { SnackBarCustomService } from 'src/app/shared/snackbar.service';
@@ -77,6 +77,7 @@ export class BillListComponent implements OnInit {
       };
       this.dataSource.filterPredicate = this.filterPredicate;
       this.dataSource.sort = this.sort;
+      this.sort.sort(({ id: 'createdAt', start: 'desc'}) as MatSortable);
       this.dataSource.paginator = this.paginator;
       this.reloadFilter();
       this.excelLoad();

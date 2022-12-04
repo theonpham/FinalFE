@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { BILL } from '../bill/bill.const';
 import { ApiHttpService } from '../shared/api-http.service';
 import {
   TABLE,
@@ -8,6 +9,7 @@ import {
   FLOOR,
   addFloorURL,
   getFloorListURL,
+  getTableBillURL,
 } from './table.const';
 @Injectable({
   providedIn: 'root',
@@ -27,6 +29,9 @@ export class TableService {
   }
   addFloor(input: FLOOR): Observable<any> {
     return this.http.post(addFloorURL, input);
+  }
+  getTableBill(id:string): Observable<BILL> {
+    return this.http.get(getTableBillURL(id));
   }
   // updateTable(id: string, input: any): Observable<any> {
   //   return this.http.put(updateTableURL(id), input);

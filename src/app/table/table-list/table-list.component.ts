@@ -53,8 +53,7 @@ export class TableListComponent implements OnInit {
   }
   openDetail(row: TABLE) {
     const dialogRef = this._dialog.open(TableDetailComponent, {
-      width: '1200px',
-      height: '800px',
+      width: '550px',
       data: row,
     });
     dialogRef.afterClosed().subscribe(() => {});

@@ -1,7 +1,7 @@
 <div *ngIf="loaded" class="dashboard-container">
   <div class="chart-row">
     <app-today-bill-pie-chart [data]="billData"></app-today-bill-pie-chart>
-    <app-bill-line-chart></app-bill-line-chart>
+    <app-bill-line-chart [data]="billData"></app-bill-line-chart>
   </div>
   <div class="row">
     <app-top-food [data]="billData"></app-top-food>

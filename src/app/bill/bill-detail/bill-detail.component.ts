@@ -16,7 +16,6 @@ export class BillDetailComponent implements OnInit {
   // @ts-ignore
   selectedBill: BILL;
   pdfDisplay = true;
-  totalBill = 0;
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: BILL,
@@ -25,9 +24,6 @@ export class BillDetailComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.selectedBill = this.data;
-    this.selectedBill.foods.forEach((food) => {
-      this.totalBill += food.price;
-    });
   }
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
