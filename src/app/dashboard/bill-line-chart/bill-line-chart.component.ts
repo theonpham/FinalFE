@@ -19,17 +19,19 @@ import { BILL } from 'src/app/bill/bill.const';
 })
 export class BillLineChartComponent implements OnInit {
   @Input() data!: BILL[];
-  chartData :ChartDataset[]= [{
-    data: [],
-    label: 'Doanh Thu',
-    fill: false,
-    tension: 0.5,
-    borderColor: '#59C8FF',
-    backgroundColor: '#FFFFFF',
-    pointBackgroundColor: '#004DAA',
-  }];
-  chartLabel:any[]=[];
-  public lineChartOptions: ChartOptions= {
+  chartData: ChartDataset[] = [
+    {
+      data: [],
+      label: 'Doanh Thu',
+      fill: false,
+      tension: 0.5,
+      borderColor: '#59C8FF',
+      backgroundColor: '#FFFFFF',
+      pointBackgroundColor: '#004DAA',
+    },
+  ];
+  chartLabel: any[] = [];
+  public lineChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -95,17 +97,17 @@ export class BillLineChartComponent implements OnInit {
       this.end.getMonth() - 1,
       this.end.getDate()
     );
-    this.reload()
+    this.reload();
   }
   reload() {
     const filteredData = this.data.filter((bill) => {
       const billDate = moment(bill.createdAt).valueOf();
-      if(!this.start && !this.end){
+      if (!this.start && !this.end) {
         return true;
-      }else if (!this.start && this.end){
-        return billDate <= moment(this.end).add(1, 'days').valueOf()
-      } else if (this.start && !this.end){
-        moment(this.start).valueOf() <= billDate
+      } else if (!this.start && this.end) {
+        return billDate <= moment(this.end).add(1, 'days').valueOf();
+      } else if (this.start && !this.end) {
+        moment(this.start).valueOf() <= billDate;
       }
       return (
         moment(this.start).valueOf() <= billDate &&
@@ -116,13 +118,12 @@ export class BillLineChartComponent implements OnInit {
     this.chartData[0].data = [];
     this.chartLabel = [];
     const data = this.getBillDateTotal(filteredData);
-    console.log(data);
-    data.forEach((bill:any)=>{
-    // @ts-ignore
+    data.forEach((bill: any) => {
+      // @ts-ignore
       this.chartLabel.push(bill.date);
-    // @ts-ignore
-      this.chartData[0].data.push(bill.total)
-    })
+      // @ts-ignore
+      this.chartData[0].data.push(bill.total);
+    });
   }
   getBillDateTotal(data: any) {
     const result = [
