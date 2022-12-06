@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFireMessaging } from '@angular/fire/messaging';
 import { BehaviorSubject } from 'rxjs';
-import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 
 @Injectable({
   providedIn: 'root',

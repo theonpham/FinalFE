@@ -1,4 +1,3 @@
-
 // For foods
 [GET] foods: https://restaurant-server-eight.vercel.app/restaurant/api/foods
 
@@ -20,11 +19,13 @@
 [POST] product: https://restaurant-server-eight.vercel.app/restaurant/api/product/create
 
 //Table
-[GET] table: https://restaurant-server-eight.vercel.app/restaurant/api/table/all/{floor}
+[GET] table in floor: https://restaurant-server-eight.vercel.app/restaurant/api/table/all/{floor}
 
-[POST] table: https://restaurant-server-eight.vercel.app/restaurant/api/table/create
+[POST] create table: https://restaurant-server-eight.vercel.app/restaurant/api/table/create
 
-[GET] table: https://restaurant-server-eight.vercel.app/restaurant/api/table/all
+[GET] all table: https://restaurant-server-eight.vercel.app/restaurant/api/table/all
+
+[PUT] update table: https://restaurant-server-eight.vercel.app/restaurant/api/table/update/:id?_method=PUT
 
 //Floor
 [GET] floor: https://restaurant-server-eight.vercel.app/restaurant/api/floor/all
@@ -66,6 +67,12 @@
 [GET] bill: https://restaurant-server-eight.vercel.app/restaurant/api/history/:id
 
 
+// Notification:
+
+[GET] all: https://restaurant-server-eight.vercel.app/restaurant/api/notification/:idStaff
+
+[POST] bill: https://restaurant-server-eight.vercel.app/restaurant/api/notification/create
+
+
 =====> Results returned for each [PUT], [DELETE],[POST] :
 {"message":  " ' Method' successfully "}
-Đang hiển thị 2722354519553510779.

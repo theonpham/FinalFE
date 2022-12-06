@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './login/login.service';
 import { Location } from '@angular/common';
+import { MessagingService } from './firebase/messaging.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private service: LoginService,
-    private location: Location
+    private location: Location,
+    private messagingSerivce : MessagingService
   ) {}
   ngOnInit(): void {
     if (this.location.path() == '/login') {
@@ -42,6 +44,11 @@ export class AppComponent implements OnInit {
       this.loaded = true;
       this.router.navigate([`/login`]);
     }
+    this.messagingSerivce.requestPermission();
+    this.messagingSerivce.receiveMessage();
+    this.messagingSerivce.currentMessage$.subscribe((data)=>{
+      console.log(data);
+    })
   }
   setLogin(data: any) {
     if (data) {

@@ -12,6 +12,7 @@ import * as fs from 'file-saver';
 import { Subject, takeUntil } from 'rxjs';
 import { Workbook } from 'exceljs';
 import { DatePipe } from '@angular/common';
+import { MessagingService } from 'src/app/firebase/messaging.service';
 
 @Component({
   selector: 'app-bill-list',
@@ -51,10 +52,19 @@ export class BillListComponent implements OnInit {
     private _dialog: MatDialog,
     private service: BillService,
     private snackBar: SnackBarCustomService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private messagingSerivce : MessagingService
   ) {}
 
   ngOnInit(): void {
+    this.reload();
+    this.messagingSerivce.currentMessage$.subscribe((data)=>{
+      if(data){
+        this.reload()
+      }
+    })
+  }
+  reload(){
     this.service.getAllBill().subscribe((data) => {
       this.init = true;
       this.data = data;

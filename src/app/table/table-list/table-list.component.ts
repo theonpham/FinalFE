@@ -5,6 +5,7 @@ import { TableService } from '../table.service';
 import { getFoodListURL } from '../../food/food.const';
 import { TableDetailComponent } from '../table-detail/table-detail.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MessagingService } from 'src/app/firebase/messaging.service';
 
 @Component({
   selector: 'app-table-list',
@@ -15,13 +16,20 @@ export class TableListComponent implements OnInit {
   data: TABLE[] = [];
   filteredData: TABLE[] = [];
   init = false;
-  constructor(private service: TableService, private _dialog: MatDialog) {}
+  constructor(private service: TableService, private _dialog: MatDialog,
+    private messagingSerivce : MessagingService
+    ) {}
 
   ngOnInit(): void {
     this.reload();
     this.service.filterValue$.subscribe((data) => {
       this.filterPredicate(data);
     });
+    this.messagingSerivce.currentMessage$.subscribe((data)=>{
+      if(data){
+        this.reload()
+      }
+    })
   }
   reload() {
     this.init = false;
