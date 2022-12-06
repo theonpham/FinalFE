@@ -7,6 +7,7 @@ import { BillComponent } from './bill/bill.component';
 import { FoodComponent } from './food/food.component';
 import { FoodTypeComponent } from './food-type/food-type.component';
 import { ClientComponent } from './client/client.component';
+import { NotificationStaffComponent } from './notification-staff/notification-staff.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -71,6 +72,13 @@ export const APP_ROUTES: Routes = [
     component: ClientComponent,
     data: {
       pageTitle: 'Khách hàng thân thiết',
+    },
+  },
+  {
+    path: 'notification',
+    component: NotificationStaffComponent,
+    data: {
+      pageTitle: 'Thông báo',
     },
   },
   { path: '**', redirectTo: '/dashboard' },

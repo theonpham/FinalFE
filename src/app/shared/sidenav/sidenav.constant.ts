@@ -31,6 +31,12 @@ export const SIDENAV_CONTENTS: SideNav[] = [
     navLink: '/food',
     code: ['admin'],
   },
+  
+  // {
+  //   name: 'Gửi thông báo',
+  //   navLink: '/notification',
+  //   code: ['admin','staff'],
+  // },
   // {
   //   name: 'Thể loại',
   //   svgIcon: 'food-type',

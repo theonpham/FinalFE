@@ -43,6 +43,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { MessagingService } from './firebase/messaging.service';
+import { NotificationStaffComponent } from './notification-staff/notification-staff.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +76,7 @@ import { MessagingService } from './firebase/messaging.service';
     TopTableComponent,
     TopFoodComponent,
     FoodSupplyComponent,
+    NotificationStaffComponent,
   ],
 
   imports: [
