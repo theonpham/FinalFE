@@ -46,9 +46,6 @@ export class AppComponent implements OnInit {
     }
     this.messagingSerivce.requestPermission();
     this.messagingSerivce.receiveMessage();
-    this.messagingSerivce.currentMessage$.subscribe((data)=>{
-      console.log(data);
-    })
   }
   setLogin(data: any) {
     if (data) {

@@ -13,6 +13,7 @@ export class MessagingService {
       _messaging.onMessage = _messaging.onMessage.bind(_messaging);
       _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
     });
+    navigator.serviceWorker.addEventListener('message',this.onReciveMessage.bind(this))
   }
   requestPermission() {
     this.angularFireMessaging.requestToken.subscribe(
@@ -29,5 +30,16 @@ export class MessagingService {
       console.log('new message received. ', payload);
       this.currentMessage.next(payload);
     });
+  }
+  onReciveMessage(event:any){
+    if(event.data !=null){
+      const type = event.data.firebaseMessagingType;
+      if(type == "push-msg-received"){
+        const firebaseMessagingData  = event.data.firebaseMessagingData;
+        const from = firebaseMessagingData.from;
+        const payload = firebaseMessagingData.notification
+        this.currentMessage.next(payload);
+      }
+    }
   }
 }
