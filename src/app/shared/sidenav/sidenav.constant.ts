@@ -5,7 +5,7 @@ export const SIDENAV_CONTENTS: SideNav[] = [
     name: 'Dashboard',
     svgIcon: 'dashboard',
     navLink: '/dashboard',
-    code: ['admin'],
+    code: ['admin', 'staff'],
   },
   {
     name: 'Quản lý bàn ăn',

@@ -35,17 +35,13 @@ export class FoodListComponent implements OnInit {
         if (!!value?.name) {
           match =
             match &&
-            food.name.toLowerCase().includes(value?.name.toLowerCase());
+            food?.name.toLowerCase().includes(value?.name.toLowerCase());
         }
         if (!!value?.type) {
-          match =
-            match &&
-            food.type.toLowerCase().includes(value?.type.toLowerCase());
+          match = match && food?.type == value?.type;
         }
         if (!!value?.price) {
-          match =
-            match &&
-            food.price.toLowerCase().includes(value?.price.toLowerCase());
+          match = match && food?.price == value?.price;
         }
         return match;
       });
@@ -55,7 +51,7 @@ export class FoodListComponent implements OnInit {
     const dialogRef = this._dialog.open(FoodDetailComponent, {
       width: '1200px',
       height: '800px',
-      data: row
+      data: row,
     });
     dialogRef.afterClosed().subscribe(() => {});
   }

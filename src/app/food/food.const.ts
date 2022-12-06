@@ -2,7 +2,7 @@ export interface FOOD {
   _id: string;
   name: string;
   urlImage: string;
-  type: string;
+  type: any;
   total: any;
   price: any;
 }
