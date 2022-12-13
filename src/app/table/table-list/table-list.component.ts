@@ -6,6 +6,7 @@ import { getFoodListURL } from '../../food/food.const';
 import { TableDetailComponent } from '../table-detail/table-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagingService } from 'src/app/firebase/messaging.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-table-list',
@@ -16,20 +17,29 @@ export class TableListComponent implements OnInit {
   data: TABLE[] = [];
   filteredData: TABLE[] = [];
   init = false;
-  constructor(private service: TableService, private _dialog: MatDialog,
-    private messagingSerivce : MessagingService
-    ) {}
+  constructor(
+    private service: TableService,
+    private _dialog: MatDialog,
+    private messagingSerivce: MessagingService
+  ) {}
 
   ngOnInit(): void {
     this.reload();
     this.service.filterValue$.subscribe((data) => {
       this.filterPredicate(data);
     });
-    this.messagingSerivce.currentMessage$.subscribe((data)=>{
-      if(data){
-        this.reload()
-      }
-    })
+    this.messagingSerivce.currentMessage$
+      .pipe(takeUntil(this._destroying$))
+      .subscribe((data) => {
+        if (data) {
+          this.reload();
+        }
+      });
+  }
+  private readonly _destroying$ = new Subject<void>();
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
   }
   reload() {
     this.init = false;

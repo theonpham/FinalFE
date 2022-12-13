@@ -1,3 +1,4 @@
+import { STAFF } from '../staff/staff.const';
 import { TABLE } from '../table/table.const';
 export interface BILL {
   _id: string;
@@ -8,6 +9,7 @@ export interface BILL {
   checkoutType: any;
   table: TABLE;
   createdAt: string;
+  staff:STAFF;
   foods: {
     _id: string;
     id: string;
@@ -29,6 +31,8 @@ export const addBillURL =
   'https://restaurant-server-eight.vercel.app/restaurant/api/bill/create';
 export const updateBillURL = (id: string) =>
   `https://restaurant-server-eight.vercel.app/restaurant/api/bill/update/${id}?_method=PUT`;
+  export const sendBillNotificationURL = () =>
+  `https://restaurant-server-eight.vercel.app/restaurant/api/bill/notify`;
 // // Bill
 // [GET] bill: https://restaurant-server-eight.vercel.app/restaurant/api/bill/all
 

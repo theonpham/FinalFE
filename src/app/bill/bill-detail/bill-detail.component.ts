@@ -6,6 +6,8 @@ import html2canvas from 'html2canvas';
 import { BillService } from '../bill.service';
 import Swal from 'sweetalert2';
 import { SnackBarCustomService } from 'src/app/shared/snackbar.service';
+import { TableService } from 'src/app/table/table.service';
+import { forkJoin, takeLast } from 'rxjs';
 
 @Component({
   selector: 'app-bill-detail',
@@ -20,6 +22,7 @@ export class BillDetailComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: BILL,
     private service: BillService,
+    private tableService : TableService,
     private snackBar: SnackBarCustomService
   ) {}
   ngOnInit(): void {
@@ -44,11 +47,26 @@ export class BillDetailComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const input = this.selectedBill;
-        input.status = 1;
+        input.status = 3;
         input.checkoutType = Number.parseInt(result.value);
         this.service.updateBill(this.selectedBill._id, input).subscribe(
           (res) => {
+            const table = this.selectedBill.table;
+            table.status = 0;
+            const staff = this.selectedBill.staff;
+            const notifyForm = {
+              title : 'Thông báo',
+              content : `Xác nhận hóa đơn bàn ${table.name} (tầng ${table.floor}) thành công`,
+              tokenFCM : staff.tokenFCM,
+              idBill : this.selectedBill._id,
+            }
+            
+            forkJoin([
+              this.tableService.updateTable(table._id,table),
+              this.service.sendNotificationBill(notifyForm)
+            ]).subscribe(()=>{
             this.snackBar.openSnackBar('Xác nhận thanh toán thành công', true);
+            })
           },
           (err) => {
             this.snackBar.openSnackBar(
@@ -59,6 +77,16 @@ export class BillDetailComponent implements OnInit {
         );
       }
     });
+  }
+  renderBillStatus(row: BILL) {
+    const status = row.status;
+    if (status == 2) {
+      return 'Chờ thanh toán';
+    }
+    if (status == 3) {
+      return 'Đã thanh toán';
+    }
+    return 'Chưa chốt hóa đơn';
   }
 }
 const inputOptions = {

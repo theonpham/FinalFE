@@ -10,6 +10,7 @@ import {
   addFloorURL,
   getFloorListURL,
   getTableBillURL,
+  updateTableURL,
 } from './table.const';
 @Injectable({
   providedIn: 'root',
@@ -33,12 +34,9 @@ export class TableService {
   getTableBill(id:string): Observable<BILL> {
     return this.http.get(getTableBillURL(id));
   }
-  // updateTable(id: string, input: any): Observable<any> {
-  //   return this.http.put(updateTableURL(id), input);
-  // }
-  // deleteTable(id: string): Observable<any> {
-  //   return this.http.post(removeTableURL(id));
-  // }
+  updateTable(id: string, input: any): Observable<any> {
+    return this.http.put(updateTableURL(id), input);
+  }
   changeFilterValue(value: any): void {
     this._filterValue.next(value);
   }

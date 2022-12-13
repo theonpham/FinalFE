@@ -19,7 +19,8 @@ export const addFloorURL =
   'https://restaurant-server-eight.vercel.app/restaurant/api/floor/create';
   export const getTableBillURL = (id:string) =>
   `https://restaurant-server-eight.vercel.app/restaurant/api/bill/${id}`;
-  
+  export const   updateTableURL = (id:string) =>
+  `https://restaurant-server-eight.vercel.app/restaurant/api/table/update/${id}?_method=PUT`
 // //Table
 // [GET] table: https://restaurant-server-eight.vercel.app/restaurant/api/table/all/{floor}
 

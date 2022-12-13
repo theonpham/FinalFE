@@ -16,7 +16,7 @@
       <div class="header-title">
         Thanh toán
         <div class="header-content">
-          {{ selectedBill.status ? "Đã thanh toán" : "Chưa thanh toán" }}
+          {{renderBillStatus(selectedBill) }} 
         </div>
       </div>
     </div>

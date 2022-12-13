@@ -9,6 +9,8 @@ import html2canvas from 'html2canvas';
 import Swal from 'sweetalert2';
 import { SnackBarCustomService } from 'src/app/shared/snackbar.service';
 import { BillService } from 'src/app/bill/bill.service';
+import { forkJoin } from 'rxjs';
+import { MessagingService } from 'src/app/firebase/messaging.service';
 @Component({
   selector: 'app-table-detail',
   templateUrl: './table-detail.component.html',
@@ -26,20 +28,21 @@ export class TableDetailComponent implements OnInit {
     private service: TableService,
     private billService : BillService,
     private snackBar: SnackBarCustomService,
+    private messagingSerivce : MessagingService,
     private _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.service.getTableBill(this.data._id).subscribe((data) => {
-      this.loading = false;
       if (data) {
         const date = moment(data.createdAt).format('DD/MM/YYYY');
         const today = moment().format('DD/MM/YYYY');
-        if (data.status == 0 && today == date) {
+        if (today == date) {
           this.selectedBill = data;
           this.hasBill = true;
         }
       }
+      this.loading = false;
     });
   }
   // Current Bill
@@ -62,11 +65,27 @@ export class TableDetailComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const input = this.selectedBill;
-        input.status = 1;
+        input.status = 3;
         input.checkoutType = Number.parseInt(result.value);
         this.billService.updateBill(this.selectedBill._id, input).subscribe(
           (res) => {
+            const table = this.selectedBill.table;
+            table.status = 0;
+            const staff = this.selectedBill.staff;
+            const notifyForm = {
+              title : 'Thông báo',
+              content : 'Xác nhận hóa đơn thành công',
+              tokenFCM : staff.tokenFCM,
+              idBill : this.selectedBill._id,
+            }
+            
+            forkJoin([
+              this.service.updateTable(table._id,table),
+              this.billService.sendNotificationBill(notifyForm)
+            ]).subscribe(()=>{
             this.snackBar.openSnackBar('Xác nhận thanh toán thành công', true);
+            this.messagingSerivce.currentMessage.next('reload')
+            })
           },
           (err) => {
             this.snackBar.openSnackBar(
@@ -77,6 +96,16 @@ export class TableDetailComponent implements OnInit {
         );
       }
     });
+  }
+  renderBillStatus(row: BILL) {
+    const status = row.status;
+    if (status == 2) {
+      return 'Chờ thanh toán';
+    }
+    if (status == 3) {
+      return 'Đã thanh toán';
+    }
+    return 'Chưa chốt hóa đơn';
   }
 }
 const inputOptions = {

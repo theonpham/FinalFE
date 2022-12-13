@@ -11,6 +11,7 @@ export interface STAFF {
   account: string;
   password: string;
   floorNumber: string;
+  tokenFCM : any;
 }
 export const getStaffListURL =
   'https://restaurant-server-eight.vercel.app/restaurant/api/staff/all';

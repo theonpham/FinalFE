@@ -53,21 +53,26 @@ export class BillListComponent implements OnInit {
     private service: BillService,
     private snackBar: SnackBarCustomService,
     private datePipe: DatePipe,
-    private messagingSerivce : MessagingService
+    private messagingSerivce: MessagingService
   ) {}
 
   ngOnInit(): void {
+    this.excelLoad();
     this.reload();
-    this.messagingSerivce.currentMessage$.subscribe((data)=>{
-      if(data){
-        this.reload()
-      }
-    })
+    this.messagingSerivce.currentMessage$
+      .pipe(takeUntil(this._destroying$))
+      .subscribe((data) => {
+        if (data) {
+          this.reload();
+        }
+      });
   }
-  reload(){
+  reload() {
     this.service.getAllBill().subscribe((data) => {
       this.init = true;
-      this.data = data;
+      this.data = data.sort((a: BILL, b: BILL) => {
+        return a.createdAt < b.createdAt ? 1 : -1;
+      });
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (item, property) => {
         switch (property) {
@@ -87,10 +92,8 @@ export class BillListComponent implements OnInit {
       };
       this.dataSource.filterPredicate = this.filterPredicate;
       this.dataSource.sort = this.sort;
-      this.sort.sort(({ id: 'createdAt', start: 'desc'}) as MatSortable);
       this.dataSource.paginator = this.paginator;
       this.reloadFilter();
-      this.excelLoad();
     });
   }
   reloadFilter() {
@@ -110,18 +113,26 @@ export class BillListComponent implements OnInit {
   }
   renderCheckOutType(row: BILL) {
     const type = row.checkoutType;
-    if (row.status) {
-      if (type == 0) {
-        return 'Tiền mặt';
-      }
-      if (type == 1) {
-        return 'Chuyển khoản';
-      }
-      if (type == 2) {
-        return 'Quẹt thẻ';
-      }
+    if (type == 0) {
+      return 'Tiền mặt';
+    }
+    if (type == 1) {
+      return 'Chuyển khoản';
+    }
+    if (type == 2) {
+      return 'Quẹt thẻ';
     }
     return '---';
+  }
+  renderBillStatus(row: BILL) {
+    const status = row.status;
+    if (status == 2) {
+      return 'Chờ thanh toán';
+    }
+    if (status == 3) {
+      return 'Đã thanh toán';
+    }
+    return 'Chưa chốt hóa đơn';
   }
   filterPredicate = (bill: BILL): boolean => {
     if (this.filterValue) {
