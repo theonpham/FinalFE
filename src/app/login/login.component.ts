@@ -7,6 +7,8 @@ import {
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { SnackBarCustomService } from '../shared/snackbar.service';
+import { STAFF } from '../staff/staff.const';
+import { StaffService } from '../staff/staff.service';
 import { LoginService } from './login.service';
 @Component({
   selector: 'app-login',
@@ -21,7 +23,9 @@ export class LoginComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private service: LoginService,
-    private snackbarService: SnackBarCustomService
+    private snackbarService: SnackBarCustomService,
+    private staffService : StaffService,
+
   ) {}
   formGroup: UntypedFormGroup = this.fb.group({
     account: [null, [Validators.required]],
@@ -33,6 +37,10 @@ export class LoginComponent implements OnInit {
     this.service.login(value).subscribe((data) => {
       if (data) {
         this.login.emit(data);
+        const staff : STAFF = data;
+        this.staffService.updateStaff(staff._id,staff).subscribe(()=>{
+          console.log('Update token FCM thanh cong');
+        })
         this.cookieService.set('login', valueString);
         this.snackbarService.openSnackBar('Đăng nhập thành công', true);
         if (data.role == `1`) {
