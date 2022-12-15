@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
       this.serviceBill.getAllBill(),
     ]).subscribe((data) => {
       this.foodData = data[0];
-      this.billData = data[1].filter((bill) => bill.status == 1);
+      this.billData = data[1].filter((bill) => bill.status == 3);
       this.loaded = true;
     });
   }

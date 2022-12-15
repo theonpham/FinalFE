@@ -35,6 +35,9 @@ export class TableListComponent implements OnInit {
           this.reload();
         }
       });
+    this.service.reloadTable$.subscribe(() => {
+      this.reload();
+    });
   }
   private readonly _destroying$ = new Subject<void>();
   ngOnDestroy(): void {

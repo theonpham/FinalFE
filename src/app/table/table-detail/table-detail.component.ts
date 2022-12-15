@@ -84,7 +84,7 @@ export class TableDetailComponent implements OnInit {
               this.billService.sendNotificationBill(notifyForm)
             ]).subscribe(()=>{
             this.snackBar.openSnackBar('Xác nhận thanh toán thành công', true);
-            this.messagingSerivce.currentMessage.next('reload')
+            this.service.reloadTableList('reload');
             })
           },
           (err) => {

@@ -16,7 +16,7 @@
       <div class="header-title">
         Thanh toán
         <div class="header-content">
-          {{renderBillStatus(selectedBill) }} 
+          {{ renderBillStatus(selectedBill) }}
         </div>
       </div>
     </div>
@@ -43,7 +43,11 @@
   </div>
 
   <div class="footer">
-    <div class="checkout-action" (click)="updateBill()">
+    <div
+      class="checkout-action"
+      (click)="updateBill()"
+      *ngIf="selectedBill.status == 2 || selectedBill.status == 3"
+    >
       Xác nhận thanh toán
     </div>
     <div class="print-action" (click)="openPDF()">In hóa đơn</div>
