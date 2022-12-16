@@ -1,0 +1,35 @@
+<div class="notification-container">
+  <div (click)="toggleNotification()" class="notification-bell-container">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="notification-bell"
+    >
+      <path
+        d="M9 0.125H8.37628V1.375C5.19156 1.73806 2.77803 4.41976 2.75128 7.625V10.5L1.06378 12.1875C0.94033 12.2989 0.871819 12.4588 0.876283 12.625V14.5C0.865107 14.6689 0.927357 14.8345 1.04708 14.9542C1.1668 15.0739 1.33234 15.1362 1.50128 15.125H5.87628C5.87628 16.8505 7.2747 18.2493 9 18.25V17C7.96506 16.9993 7.12628 16.1601 7.12628 15.125H9V13.875H2.12628V12.875L3.81378 11.1875C3.93724 11.0761 4.00575 10.9162 4.00128 10.75V7.625C4.00128 4.864 6.23917 2.62569 9 2.625V0.125Z"
+        fill="#45494E"
+      />
+      <path
+        d="M8.9986 0.125H9.62232V1.375C12.807 1.73806 15.2206 4.41976 15.2473 7.625V10.5L16.9348 12.1875C17.0583 12.2989 17.1268 12.4588 17.1223 12.625V14.5C17.1335 14.6689 17.0712 14.8345 16.9515 14.9542C16.8318 15.0739 16.6663 15.1362 16.4973 15.125H12.1223C12.1223 16.8505 10.7239 18.2493 8.9986 18.25V17C10.0335 16.9993 10.8723 16.1601 10.8723 15.125H8.9986V13.875H15.8723V12.875L14.1848 11.1875C14.0614 11.0761 13.9929 10.9162 13.9973 10.75V7.625C13.9973 4.864 11.7594 2.62569 8.9986 2.625V0.125Z"
+        fill="#45494E"
+      />
+    </svg>
+    <span
+      *ngIf="notifications.length != 0"
+      [matBadge]="notifications.length"
+      matBadgeColor="warn"
+      style="position: absolute; top: 24px; right: 24px"
+    >
+    </span>
+  </div>
+  <div class="notification-list" *ngIf="toggle">
+    <div class="notification" *ngFor="let notification of notifications">
+      <span class="title"> {{ notification.title }}</span>
+      <span class="body"> {{ notification.body }}</span>
+      <span class="time"> {{ notification.time | date : "HH:mm:ss" }}</span>
+    </div>
+  </div>
+</div>
