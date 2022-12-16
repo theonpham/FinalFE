@@ -5,9 +5,8 @@ import { TableComponent } from './table/table.component';
 import { StaffComponent } from './staff/staff.component';
 import { BillComponent } from './bill/bill.component';
 import { FoodComponent } from './food/food.component';
-import { FoodTypeComponent } from './food-type/food-type.component';
-import { ClientComponent } from './client/client.component';
 import { NotificationStaffComponent } from './notification-staff/notification-staff.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -60,25 +59,18 @@ export const APP_ROUTES: Routes = [
       pageTitle: 'Món ăn',
     },
   },
+  // {
+  //   path: 'notification',
+  //   component: NotificationStaffComponent,
+  //   data: {
+  //     pageTitle: 'Thông báo',
+  //   },
+  // },
   {
-    path: 'food-type',
-    component: FoodTypeComponent,
+    path: 'feedback',
+    component: FeedbackComponent,
     data: {
-      pageTitle: 'Thể loại',
-    },
-  },
-  {
-    path: 'client',
-    component: ClientComponent,
-    data: {
-      pageTitle: 'Khách hàng thân thiết',
-    },
-  },
-  {
-    path: 'notification',
-    component: NotificationStaffComponent,
-    data: {
-      pageTitle: 'Thông báo',
+      pageTitle: 'Feedback',
     },
   },
   { path: '**', redirectTo: '/dashboard' },

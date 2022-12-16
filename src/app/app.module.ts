@@ -11,8 +11,6 @@ import { TableComponent } from './table/table.component';
 import { StaffComponent } from './staff/staff.component';
 import { BillComponent } from './bill/bill.component';
 import { FoodComponent } from './food/food.component';
-import { ClientComponent } from './client/client.component';
-import { FoodTypeComponent } from './food-type/food-type.component';
 import { FoodListComponent } from './food/food-list/food-list.component';
 import { FoodFilterComponent } from './food/food-filter/food-filter.component';
 import { FoodInputComponent } from './food/food-input/food-input.component';
@@ -44,6 +42,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { MessagingService } from './firebase/messaging.service';
 import { NotificationStaffComponent } from './notification-staff/notification-staff.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
+import { FeedbackFilterComponent } from './feedback/feedback-filter/feedback-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +54,6 @@ import { NotificationStaffComponent } from './notification-staff/notification-st
     StaffComponent,
     BillComponent,
     FoodComponent,
-    ClientComponent,
-    FoodTypeComponent,
     FoodListComponent,
     FoodFilterComponent,
     FoodInputComponent,
@@ -77,6 +76,9 @@ import { NotificationStaffComponent } from './notification-staff/notification-st
     TopFoodComponent,
     FoodSupplyComponent,
     NotificationStaffComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
+    FeedbackFilterComponent,
   ],
 
   imports: [
@@ -92,7 +94,7 @@ import { NotificationStaffComponent } from './notification-staff/notification-st
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [MessagingService,DatePipe,AsyncPipe],
+  providers: [MessagingService, DatePipe, AsyncPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

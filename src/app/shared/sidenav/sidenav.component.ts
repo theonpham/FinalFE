@@ -57,6 +57,12 @@ export class SidenavComponent implements OnInit {
       'client',
       domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/client.svg')
     );
+    matIconRegistry.addSvgIcon(
+      'feedback',
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        '../../../assets/feedback.svg'
+      )
+    );
   }
   selectedMenu: string = '';
   currentUser!: STAFF;

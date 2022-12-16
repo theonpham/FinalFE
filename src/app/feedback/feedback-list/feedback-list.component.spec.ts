@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FoodTypeComponent } from './food-type.component';
+import { FeedbackListComponent } from './feedback-list.component';
 
-describe('FoodTypeComponent', () => {
-  let component: FoodTypeComponent;
-  let fixture: ComponentFixture<FoodTypeComponent>;
+describe('FeedbackListComponent', () => {
+  let component: FeedbackListComponent;
+  let fixture: ComponentFixture<FeedbackListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoodTypeComponent ]
+      declarations: [ FeedbackListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FoodTypeComponent);
+    fixture = TestBed.createComponent(FeedbackListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

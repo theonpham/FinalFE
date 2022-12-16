@@ -73,6 +73,8 @@
 
 [POST] bill: https://restaurant-server-eight.vercel.app/restaurant/api/notification/create
 
+// feedback:
+https://restaurant-server-eight.vercel.app/restaurant/api/feedback/all
 
 =====> Results returned for each [PUT], [DELETE],[POST] :
 {"message":  " ' Method' successfully "}

@@ -1,0 +1,76 @@
+<div class="feedback-filter-container">
+  <form [formGroup]="formGroup">
+    <div class="feedback-filter">
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-select
+            placeholder="Mức độ hài lòng"
+            floatlLabel="never"
+            formControlName="status"
+            (selectionChange)="changeFilterValue(formGroup.value)"
+          >
+            <mat-option [value]="null"> --- </mat-option>
+            <mat-option [value]="0"> Rất không hài lòng </mat-option>
+            <mat-option [value]="1"> Không hài lòng </mat-option>
+            <mat-option [value]="2"> Bình thường </mat-option>
+            <mat-option [value]="3"> Hài lòng </mat-option>
+            <mat-option [value]="4"> Rất hài lòng </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-select
+            placeholder="Phản hồi"
+            floatlLabel="never"
+            formControlName="title"
+            (selectionChange)="changeFilterValue(formGroup.value)"
+          >
+            <mat-option [value]="null"> --- </mat-option>
+            <mat-option [value]="0"> Phản hồi xấu </mat-option>
+            <mat-option [value]="1"> Một số vấn đề chưa tốt </mat-option>
+            <mat-option [value]="2"> Hoàn hảo </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            type="search"
+            placeholder="Tên"
+            formControlName="staff"
+            (input)="changeFilterValue(formGroup.value)"
+          />
+        </mat-form-field>
+      </div>
+      <div
+        class="filter-toggle-icon"
+        matTooltip="Clear Filter"
+        matTooltipClass="tooltip-name"
+        (click)="onReset()"
+        *ngIf="touched"
+        matTooltipPosition="above"
+      >
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M18.2841 28H20.9508C21.6872 28 22.2841 27.403 22.2841 26.6666V26H20.9508V26.6672H18.2841V21.0606L12.9508 15.7273V13.3339H26.2841V15H27.6175V13.3333C27.6175 12.597 27.0205 12 26.2841 12H12.9508C12.2144 12 11.6175 12.597 11.6175 13.3333V15.7267C11.619 16.0797 11.7604 16.4178 12.0108 16.6667L16.9508 21.6066V26.6666C16.9508 27.403 17.5478 28 18.2841 28Z"
+            fill="#9FA4AA"
+          />
+          <path
+            d="M29.1452 17.1452L25.9537 20.3367L29.3085 23.6915L28 25L24.6452 21.6452L21.6452 24.6452L20.5 23.5L23.5 20.5L20.5 17.5L21.8085 16.1915L24.8085 19.1915L28 16L29.1452 17.1452Z"
+            fill="#0073FF"
+          />
+        </svg>
+      </div>
+    </div>
+  </form>
+</div>
