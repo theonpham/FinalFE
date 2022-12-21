@@ -45,6 +45,7 @@ import { NotificationStaffComponent } from './notification-staff/notification-st
 import { FeedbackComponent } from './feedback/feedback.component';
 import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
 import { FeedbackFilterComponent } from './feedback/feedback-filter/feedback-filter.component';
+import { FeedbackPieChartComponent } from './dashboard/feedback-pie-chart/feedback-pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { FeedbackFilterComponent } from './feedback/feedback-filter/feedback-fil
     FeedbackComponent,
     FeedbackListComponent,
     FeedbackFilterComponent,
+    FeedbackPieChartComponent,
   ],
 
   imports: [

@@ -1,0 +1,28 @@
+<div class="feedback-pie-chart-container">
+  <div class="header">
+    <span>{{ name }}</span>
+  </div>
+  <div class="body">
+    <div class="donut-chart">
+      <canvas
+        baseChart
+        [type]="'pie'"
+        [datasets]="pieChartDatasets"
+        [labels]="pieChartLabels"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend"
+      >
+      </canvas>
+    </div>
+    <div class="xPlane">
+      <div
+        class="xPlane-sub"
+        *ngFor="let label of pieChartLabels; let i = index"
+      >
+        <span class="label">{{ label + " " }} </span>
+        <span class="amount">{{ pieChartDatasets[0].data[i] + " Phiếu" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
