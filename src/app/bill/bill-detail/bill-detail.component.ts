@@ -59,6 +59,7 @@ export class BillDetailComponent implements OnInit {
               content : `Xác nhận hóa đơn bàn ${table.name} (tầng ${table.floor}) thành công`,
               tokenFCM : staff.tokenFCM,
               idBill : this.selectedBill._id,
+              idStaff : staff._id
             }
             
             forkJoin([

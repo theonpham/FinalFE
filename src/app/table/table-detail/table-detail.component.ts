@@ -74,9 +74,10 @@ export class TableDetailComponent implements OnInit {
             const staff = this.selectedBill.staff;
             const notifyForm = {
               title : 'Thông báo',
-              content : 'Xác nhận hóa đơn thành công',
+              content : `Xác nhận hóa đơn bàn ${table.name} (tầng ${table.floor}) thành công`,
               tokenFCM : staff.tokenFCM,
               idBill : this.selectedBill._id,
+              idStaff : staff._id
             }
             
             forkJoin([
