@@ -145,13 +145,21 @@ export class BillListComponent implements OnInit {
         (this.filterValue?.checkoutType != null
           ? bill?.checkoutType === this.filterValue?.checkoutType
           : true) &&
-        (this.filterValue?.status != null
-          ? bill?.status === this.filterValue?.status
-          : true);
+          (this.filterValue?.floor != null
+            ? bill?.table?.floor === this.filterValue?.floor
+            : true)
       if (!!this.filterValue.date) {
         const result = moment(bill.createdAt).format('DD/MM/YYYY');
         const filter = moment(this.filterValue.date).format('DD/MM/YYYY');
         isMatched = result == filter;
+      }
+      if (this.filterValue?.status != null) {
+        if (this.filterValue?.status == 3) {
+          isMatched = bill?.status == this.filterValue?.status
+        }else{
+          isMatched = bill?.status != 3
+        }
+        ;
       }
       return isMatched;
     }

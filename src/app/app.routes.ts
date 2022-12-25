@@ -5,7 +5,6 @@ import { TableComponent } from './table/table.component';
 import { StaffComponent } from './staff/staff.component';
 import { BillComponent } from './bill/bill.component';
 import { FoodComponent } from './food/food.component';
-import { NotificationStaffComponent } from './notification-staff/notification-staff.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 
 export const APP_ROUTES: Routes = [

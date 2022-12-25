@@ -17,6 +17,7 @@ export class BillFilterComponent implements OnInit {
     this.formGroup = this.fb.group({
       date: [null, []],
       table: [null, []],
+      floor : [null, []],
       status: [null, []],
       checkoutType: [null, []],
     });

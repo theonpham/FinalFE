@@ -30,6 +30,18 @@
       </div>
       <div fxLayout="column">
         <mat-form-field appearance="fill">
+          <input
+            matInput
+            type="number"
+            min="1"
+            placeholder="Tầng"
+            formControlName="floor"
+            (input)="changeFilterValue(formGroup.value)"
+          />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
           <mat-select
             placeholder="Thanh toán"
             floatlLabel="never"
@@ -38,14 +50,14 @@
           >
             <mat-option [value]="null"> --- </mat-option>
             <mat-option [value]="0"> Chưa thanh toán</mat-option>
-            <mat-option [value]="1"> Đã thanh toán </mat-option>
+            <mat-option [value]="3"> Đã thanh toán </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div fxLayout="column">
         <mat-form-field appearance="fill">
           <mat-select
-            placeholder="Thanh toán"
+            placeholder="Thanh toán loại"
             floatlLabel="never"
             formControlName="checkoutType"
             (selectionChange)="changeFilterValue(formGroup.value)"
