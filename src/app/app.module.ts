@@ -41,7 +41,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { MessagingService } from './firebase/messaging.service';
-import { NotificationStaffComponent } from './notification-staff/notification-staff.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
 import { FeedbackFilterComponent } from './feedback/feedback-filter/feedback-filter.component';
@@ -76,7 +75,6 @@ import { FeedbackPieChartComponent } from './dashboard/feedback-pie-chart/feedba
     TopTableComponent,
     TopFoodComponent,
     FoodSupplyComponent,
-    NotificationStaffComponent,
     FeedbackComponent,
     FeedbackListComponent,
     FeedbackFilterComponent,
